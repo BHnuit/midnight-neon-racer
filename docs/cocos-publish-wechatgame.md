@@ -1,9 +1,9 @@
 # 附录 · 发布到微信小游戏（Cocos）
 
-一手来源（2026-08-17 本机 HTTPS 拉页）：  
-https://docs.cocos.com/creator/4.0/manual/zh/editor/publish/publish-wechatgame.html  
+一手来源（2026-08-18 复核）：
+https://docs.cocos.com/creator/3.8/manual/zh/editor/publish/publish-wechatgame.html
 
-官方标题是「发布到微信小游戏」，挂在 Creator **4.0 LTS** 手册下。同路径的 3.8 页与之同文；文中写明「Cocos Creator 3.8 中，将引擎相关的构建选项统一到了引擎设置」。本机工程是 **3.8.6**，按这篇点构建即可。
+这是 Creator **3.8 LTS** 当前页面。旧的 `/zh/publish/publish-wechatgame.html` 已标为过期并跳到该地址。本机工程是 **3.8.6**，按这篇点构建。
 
 微信侧导入规则仍看 [wechat-minigame-start.md](wechat-minigame-start.md)。第一刀过线看 [cocos-slice-a.md](cocos-slice-a.md)。
 
@@ -34,6 +34,8 @@ https://docs.cocos.com/creator/4.0/manual/zh/editor/publish/publish-wechatgame.h
 5. 构建任务右下角 **运行**：打开微信开发者工具  
 
 导入时选这一层（有 `project.config.json` 的目录），不要选整个 Creator 工程根。
+
+每次形成切片候选并刷新 `build/wechatgame/` 后，还要按 [完整方案](plan.md) 用微信小游戏助手对该目录执行 `run_game`、打开预览并检查 `get_logs`；这一步验证生成包的启动与运行日志，不替代开发者工具或真机的平台能力验证。
 
 ## 主包设置
 

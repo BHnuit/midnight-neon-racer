@@ -1,4 +1,4 @@
-# 微信小游戏平台（2026-08-17 阅读笔记）
+# 微信小游戏平台（2026-08-18 复核笔记）
 
 一手来源：微信开放文档。本机 Clash fake-ip 导致部分抓取工具把 `developers.weixin.qq.com` 判成内网；正文以本机 HTTPS 200 页面为准。
 
@@ -23,7 +23,7 @@ iOS 用 JavaScriptCore、Android 用 V8：**没有 BOM/DOM，没有 `document` /
 - Adapter：https://developers.weixin.qq.com/minigame/dev/guide/runtime/adapter.html
 - 引擎适配：https://developers.weixin.qq.com/minigame/dev/guide/game-engine/engine-overview.html
 - 进阶：https://developers.weixin.qq.com/minigame/dev/guide/develop/develop.html
-- Cocos 发布到微信小游戏：https://docs.cocos.com/creator/4.0/manual/zh/editor/publish/publish-wechatgame.html（正文摘进 [cocos-publish-wechatgame.md](cocos-publish-wechatgame.md)）
+- Cocos 发布到微信小游戏：https://docs.cocos.com/creator/3.8/manual/zh/editor/publish/publish-wechatgame.html（正文摘进 [cocos-publish-wechatgame.md](cocos-publish-wechatgame.md)）
 
 对本 demo 的直接含义：`index.html` 的 CSS HUD、DOM 菜单、Google Fonts、`navigator.share`、直接 `fetch` Netlify、浏览器 `AudioContext` **不能原样上架**。画布循环和 WebAudio 思路可迁，但要换成 `wx` API（平台提供 `wx.createWebAudioContext`）。
 
@@ -64,5 +64,5 @@ IAA 备案还要走「小游戏备案」（主管部门约 10–20 个工作日�
 
 ## 尚未从文档抽出、不要当事实
 
-- 当前主包/分包体积上限的准确数字（本轮未打开分包页）
-- Hans 是否已有小游戏账号、企业主体、软著或版号
+- Cocos Creator 3.8 当前发布页写明主包不超过 4MB，但提审前仍要回微信官方后台/文档复核当时限制；本笔记不锁分包数量与单包上限
+- 正式广告位、上传私钥、软著或其他后台资质的当前可用状态；已确认的是个人主体账号已注册、走 IAA

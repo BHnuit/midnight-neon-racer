@@ -2,13 +2,14 @@
 
 先读这些，不要从聊天记录猜：
 
-1. [PROJECT.md](../PROJECT.md) 的 Startup Summary  
-2. [CONTEXT.md](../CONTEXT.md) 全文  
-3. [TREE.md](../TREE.md) + [adr/0001-first-version-loop.md](adr/0001-first-version-loop.md)
+1. [PROJECT.md](../PROJECT.md) 的 Startup Summary
+2. [CONTEXT.md](../CONTEXT.md) 全文
+3. [TREE.md](../TREE.md) + [adr/0001-first-version-loop.md](adr/0001-first-version-loop.md) + [adr/0002-dual-repo-governance.md](adr/0002-dual-repo-governance.md)
+4. 进入 Cocos 工程后读 `../../midnightroad/AGENTS.md` 与 `../../midnightroad/docs/architecture.md`
 
 ## 这一轮要做什么
 
-写**整个项目的开发方案**，正文落 [plan.md](plan.md)（没有就新建）。不要一上来写正式第二刀代码，不要把 `MvpLoop` 扩成正式架构。
+[整个项目的开发方案](plan.md)已经写完，目录治理骨架也已建立，当前等待 Hans 验收。治理完成不等于 S0 完成。未验收时只审方案，不改正式玩法代码；验收后按方案先做 S0 工程基线，再做 S1 正式第二刀。不要把 `MvpLoop` 扩成正式架构。
 
 ## 两套目录
 
@@ -23,20 +24,23 @@
 
 ## 先停
 
-- 局内精细出图  
-- 不要在契约仓库放 `.mcp.json`  
-- 不要把 `MvpLoop` 当成正式包  
+- 局内精细出图
+- 不要在契约仓库放 `.mcp.json`
+- 不要把 `MvpLoop` 当成正式包
 - 不要重开 Netlify 游戏站，除非 Hans 点名要新网页 Demo
 
 ## 未关
 
-- 本会话：写出开发方案  
-- 备案截图等以后  
+- Hans 验收 [完整开发方案](plan.md)
+- 验收后：S0 补测试工具/独立 typecheck、审计模板、用 Creator 检查工程并建立基线 -> S1 正式第二刀
+- 备案截图等以后
 
-## 方案会话手上有什么
+## 实施会话手上有什么
 
-- 已有：词、ADR 0001、画布 720×1280、MCP Pro、第一刀空包、[色块循环](cocos-slice-b-mvp.md)、文件树  
-- 没有：`docs/plan.md`、机位 A 上路、美术进包  
-- 第二刀预定范围仍是：选车 + 一段三车道 + 本地结算；广告和好友榜仍不进  
+- 已有：词、ADR 0001/0002、前期经 Game Studio / 微信小游戏助手复审的[完整开发方案](plan.md)、当前按需使用的 `game-architect`、画布 720×1280、MCP Pro、第一刀空包、[色块循环](cocos-slice-b-mvp.md)、双仓治理与 Cocos 架构地图
+- 没有：正式第二刀、机位 A 上路、美术进包
+- 第二刀预定范围仍是：选车 + 一段三车道 + 本地结算；广告和好友榜仍不进
 
-完整索引：[README.md](README.md)  
+实现时区分两套 MCP：Cocos MCP 改 Creator 资产；微信小游戏助手只接含 `game.js` 的 `midnightroad/build/wechatgame/`，用于构建后的预览、日志、截图与真机证据。不要在契约仓写 MCP 配置。
+
+完整索引：[README.md](README.md)

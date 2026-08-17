@@ -1,17 +1,17 @@
-# 午夜霓虹 · 极速赛车
+# 真夜中道路
 
 **Type**: 微信小游戏（个人 IAA）
 **Status**: waiting
-**Created / Last Updated**: 2026-08-17
-**协作等级 / 角色**: L2 执行者（方向由 Hans 定；方案写完前不正式开工）
+**Created / Last Updated**: 2026-08-18
+**协作等级 / 角色**: L2 执行者（方向由 Hans 定；方案验收前不正式开工）
 **Alignment**: aligned
 **Feishu**: 未发布
 
 ## Startup Summary
 
-**Project Snapshot**: 第一版需求已对齐。目标平台只有微信小游戏。框架两轮已过。H5 已归档并下线 Netlify（站还留着，只发停机页）。正式方案未写，出图暂停。
+**Project Snapshot**: 第一版需求已对齐。目标平台只有微信小游戏。框架两轮已过。H5 已归档并下线 Netlify（站还留着，只发停机页）。完整开发方案前期已用 Game Studio 与微信小游戏助手复审，补齐需求追溯、风险、证据和包级验证链，待 Hans 验收。Game Studio 已卸载，`game-architect` 已安装为按需架构顾问；双仓目录治理、README 责任边界和 Cocos 实现架构地图已经落地。这不是 S0 完成，也没有改正式玩法。正式第二刀仍未开工，出图暂停。
 
-**Next Step**: **新开一轮会话**写整个项目的开发方案（落 `docs/plan.md`）。本轮不再改玩法。
+**Next Step**: **Hans 审阅并接受 [完整开发方案](docs/plan.md)**。接受后，实施 Agent 按方案先做 S0 工程基线，再做 S1 正式第二刀；接受前不改正式玩法代码。
 
 ## Objective
 
@@ -34,20 +34,23 @@ H5 Demo 已归档（`archive/h5-demo/`）并下线。Netlify 站保留，只发 
 - AC-align：Hans 确认复述即第一版；词在 `CONTEXT.md`，决定在 [ADR 0001](docs/adr/0001-first-version-loop.md)
 - AC-pipe：空场景微信包能编（第一刀 A）；Creator 预览里色块循环能选车/开/结算（[slice-b](docs/cocos-slice-b-mvp.md)）；MCP 能操作 `midnightroad`
 
-第一版上架验收（**尚未做**，等计划会话拆开）：
+第一版上架验收（**尚未做**，按 [完整开发方案](docs/plan.md) S1–S7 推进）：
 
 - AC-play：能选车、开种子大图、当场看到四项分、可本地结算
 - AC-cars：五车定位与里程节奏符合契约
 - AC-iaa：一次激励续命；结算好友榜；无内购
 - AC-ship：Cocos 微信包在开发者工具/真机可玩，名称与备案稿一致
 
-第二刀预定范围仍是「选车 + 一段三车道 + 本地结算」，怎么切由下一轮计划决定。
+正式第二刀范围仍是「选车 + 一段三车道 + 本地结算」，按方案 S1 实施；广告和好友榜不进入这一刀。
 
 ## Tools & Resources
 
 - 产品契约仓库：`BHnuit/midnight-neon-racer`（本目录）
 - Cocos 工程（不在本 git 根下）：`/Users/hant/工作台/projects/creation/midnightroad/`
 - 微信导出包：`midnightroad/build/wechatgame/`
+- 完整开发方案：[docs/plan.md](docs/plan.md)
+- 架构顾问：`game-architect`（只按 [§5.6](docs/plan.md#56-架构顾问按需调用) 的节点调用；不负责日常工作流）
+- 包级验证：`@tencent-adm/weixin-minigame-helper`（只接 Creator 导出的 `build/wechatgame/`）
 - 文件树：[TREE.md](TREE.md)；文档索引：[docs/README.md](docs/README.md)
 - Netlify（已下线，站还留着）：site `31c60f42-99a4-4890-a9a3-aa50ff2c7c92`；publish=`archive/offline/`；旧游戏在 `archive/h5-demo/`
 - Cocos MCP 3.x Pro：`midnightroad/extensions/cocos-mcp-server/`（v1.7.9）；`http://127.0.0.1:21569/mcp`。不要往仓库扔 `.mcp.json`
@@ -55,8 +58,10 @@ H5 Demo 已归档（`archive/h5-demo/`）并下线。Netlify 站保留，只发 
 ## Progress Snapshot
 
 - 需求已对齐；两轮框架验证已过；H5 已归档；Netlify 已下线
-- 正式第二刀未开工。美术出图暂停
-- 下一轮：写 `docs/plan.md`
+- 完整开发方案已完成专业复审并待 Hans 验收；正式第二刀未开工；美术出图暂停
+- 双仓目录治理已完成：契约仓主动目录有职责 README；Cocos 工程有根级 AGENTS/README、架构地图和测试目录契约
+- 工具策略已收敛：保留微信小游戏助手做包级验证，`game-architect` 只在 §5.6 架构节点调用；不为常规编码启用大型游戏工作室流程
+- 下一步：Hans 接受方案后，按 S0 建基线、S1 实施正式第二刀
 
 ## Execution Log
 
@@ -116,3 +121,7 @@ H5 Demo 已归档（`archive/h5-demo/`）并下线。Netlify 站保留，只发 
 - 2026-08-17：Hans 澄清第二轮验证 = **最小 MVP，不是正式开工**。在 `scene.scene` 用 MCP 搭了选车/三车道/本地结算，脚本 `midnightroad/assets/scripts/MvpLoop.ts`。预览已见到三屏（选车、赛道 HUD 路程 810、结算 路程/擦车/碾压/完赛）。记下 [docs/cocos-slice-b-mvp.md](docs/cocos-slice-b-mvp.md)。正式计划仍待下轮会话。
 - 2026-08-17：本轮收工。进度写回；H5 Demo 整包迁到 `archive/h5-demo/`；根 `netlify.toml` 改指向归档以免误发空站。落下 [TREE.md](TREE.md)、[docs/README.md](docs/README.md)。下一轮会话写整个项目方案（`docs/plan.md`）。
 - 2026-08-17：Hans 确认 Netlify 先下线，目标平台只留微信小游戏。publish 改为 `archive/offline/`（停机页），站点不删，以后有新 Demo 再开。
+- 2026-08-17：按已对齐需求与 Cocos 色块验证写下 [完整开发方案](docs/plan.md)：正式模块、S0–S7 垂直切片、验证矩阵、审查标准、Agent 开工卡与 Hans 决策门。只改契约仓文档，未改 Cocos 玩法；方案待 Hans 验收。
+- 2026-08-18：按 SkillHub 指南安装并校验 `@tencent-adm/weixin-minigame-helper@1.0.1` 与 `@user_5e9ef3eb/game-studio@1.0.0`。用两者复审契约仓、Cocos 磁盘结构和完整方案：修正旧名/多点触控表述，补现状与目标结构、玩家体验支柱、系统依赖、状态/边界/调参、风险、追溯、证据格式，以及 Cocos 构建后 `run_game` / `get_logs` / 截图 / 真机验证链。未改正式玩法代码。
+- 2026-08-18：按 Game Studio 的阶段识别、系统映射、架构落位和 QA 交接方法治理双仓文件树。契约仓为主动维护的 `docs/`、`assets/minigame/` 各层补职责 README；新增 [ADR 0002](docs/adr/0002-dual-repo-governance.md)。Cocos 工程新增根 AGENTS/README、`docs/architecture.md`、`tests/core/` 说明并加固忽略规则。为避免 Asset Database 与模板污染，没有在 Cocos `assets/` 或 `build-templates/wechatgame/` 内塞 README，也未改 `.scene/.prefab/.anim/.meta` 或玩法代码。
+- 2026-08-18：按 Hans 决定卸载 `@user_5e9ef3eb/game-studio`，安装 `game-architect` 作为架构知识顾问。后续按方案 §5.6 仅在 S0/S1 架构落地、S2 种子地图、重大需求变更和已测出的性能瓶颈节点调用；常规实现、修 Bug、调数值、微信包验证不调用。保留前期 Game Studio 复审记录，不再把它写成当前依赖。

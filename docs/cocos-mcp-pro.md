@@ -30,6 +30,17 @@ enabled = true
 
 **不要**在契约仓库 `midnight-neon-racer` 放 `.mcp.json`。未信任的仓库文件会盖掉用户配置。
 
+## 与微信小游戏助手的边界
+
+本项目有两套不同的 MCP，不得互相替代：
+
+| 服务 | 输入目录 | 负责 | 不负责 |
+| --- | --- | --- | --- |
+| Cocos MCP Pro | `midnightroad/` | 场景、节点、预制体、资源、Creator 预览与校验 | 微信包日志、真机二维码、上传 |
+| 微信小游戏助手 | `midnightroad/build/wechatgame/` | 对含 `game.js` 的导出包执行 `run_game`、`get_logs`、截图、真机预览和授权后的上传 | 修改 `.scene`、替代 Creator 构建 |
+
+工作顺序是「Cocos MCP 改资产并在 Creator 验证 → Creator 构建微信包 → 微信小游戏助手验证导出包」。助手技能安装在用户级 skill 目录，不复制进项目；其 stdio MCP 是否可调用在 S0 首次包级验证时确认。任何 AppID、上传私钥或 token 都不得写入仓库。
+
 Grok 换会话才会把新 MCP 编进工具表；`/mcps` 按 `r` 刷新不够。Creator 关了、端口改了，本会话里的工具会立刻失败。
 
 ## 开源 vs 本机 Pro
@@ -72,7 +83,7 @@ cocos_knowledge  topic="tool_guide" query="node.create"
 3. 节点参数可传 UUID、路径（`Canvas/Panel/Btn`）或名字，插件会解析。
 4. 3 个以上同类改动走批量：`cocos_node.batch_modify`、`cocos_composite.batch_create_*`、`cocos_component.batch_click_event`。
 5. 改完用 `cocos_scene action=validate_scene` 查断裂引用；布局/重叠用 `cocos_validate`。
-6. 微信小游戏包仍按 [cocos-publish-wechatgame.md](cocos-publish-wechatgame.md) 在编辑器里构建。MCP 的 `build_settings` 自己说完整构建配置要走 Editor UI；`editor.build` 示例平台是 `web-mobile`，**不能代替**「发布到微信小游戏」。
+6. 微信小游戏包仍按 [cocos-publish-wechatgame.md](cocos-publish-wechatgame.md) 在编辑器里构建。Cocos MCP 的 `build_settings` 自己说完整构建配置要走 Editor UI；`editor.build` 示例平台是 `web-mobile`，**不能代替**「发布到微信小游戏」，微信小游戏助手也不能替代 Creator 构建。
 7. 不要手搓正式包 `game.js`，不要把 Demo 的 `window.__game` 搬进 Cocos。
 
 ## 16 个工具（2026-08-17 本会话实探）
