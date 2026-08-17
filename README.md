@@ -35,10 +35,10 @@ AGENTS.md                       # 给 grokbot / 后续 Agent 的交接
 python3 -m venv .venv
 .venv/bin/pip install playwright
 .venv/bin/playwright install chromium
-.venv/bin/python tests/racer_test_physics.py
-# 或
 npm test
 ```
+
+`tests/run.sh` 会优先用仓库 `.venv`，其次本机 `/tmp/ptest-venv`。没有 Playwright 会直接报缺模块。
 
 默认打线上 `https://racer.bhnuit.cn/`。改目标：
 
