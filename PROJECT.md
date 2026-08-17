@@ -9,9 +9,9 @@
 
 ## Startup Summary
 
-**Project Snapshot**: 第一版需求已对齐。目标平台只有微信小游戏。框架两轮已过。H5 已归档并下线 Netlify。完整开发方案已由 Hans 于 2026-08-18 接受。S0 工程基线已建立：Cocos `dda5a64`，测试/typecheck 可空跑，模板与 3.8.6 默认一致，Creator 能打开色块场景。微信助手 `run_game` 本会话未挂上，S0-PKG 为 BLOCKED。正式玩法仍是 `MvpLoop`，出图暂停。
+**Project Snapshot**: 第一版需求已对齐。目标平台只有微信小游戏。完整方案已接受。S0 工程基线在 Cocos `dda5a64`。S1 已开始：`RunSession` 纯规则可测（确定性、擦车一次、两撞掉命、短段完赛、同帧氮换道），场景仍挂 `MvpLoop`。S0-PKG 仍 BLOCKED。出图暂停。
 
-**Next Step**: **在新会话热加载微信小游戏助手后补 S0-PKG**，同时按方案做 S1 正式第二刀（替换 `MvpLoop`，选跑车 + 短段 + 本地四项结算）。
+**Next Step**: **把 S1 接到正式场景**：用 `GameDirector` + Dev adapter 替换 `MvpLoop`，Creator 预览跑通选车/短段/结算。新会话再补微信助手空包验证。
 
 ## Objective
 
@@ -144,3 +144,4 @@ H5 Demo 已归档（`archive/h5-demo/`）并下线。Netlify 站保留，只发 
 - 2026-08-18：按 Hans 决定卸载 `@user_5e9ef3eb/game-studio`，安装 `game-architect` 作为架构知识顾问。后续按方案 §5.6 仅在 S0/S1 架构落地、S2 种子地图、重大需求变更和已测出的性能瓶颈节点调用；常规实现、修 Bug、调数值、微信包验证不调用。保留前期 Game Studio 复审记录，不再把它写成当前依赖。
 - 2026-08-18：Hans 接受 [完整开发方案](docs/plan.md) 并授权按 S0→S1 开工。原话：「接受，授权开工」。Gate 1 关闭。未改正式玩法；进入 S0 工程基线。
 - 2026-08-18：完成 S0 工程部分。Cocos 首个基线提交 `dda5a64`，分支 `main` 与 `BHnuit/s1-formal-second-slice`。`npm test` / `typecheck:core` 通过；`game.ejs` 与 Creator 3.8.6 默认一致；Creator 打开 `scene.scene` 无断裂引用。S0-PKG 因本会话无微信助手 MCP 标 BLOCKED。未改正式玩法。
+- 2026-08-18：S1 开工。Cocos `assets/scripts/core/RunSession.ts` 通过 10 个纯规则测试；未改场景，未删 `MvpLoop`。

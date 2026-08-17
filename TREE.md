@@ -40,7 +40,9 @@ creation/
     │   └── architecture.md       # assets 目标目录与模块职责地图
     ├── assets/
     │   ├── scene.scene           # 当前色块验证场景
-    │   └── scripts/MvpLoop.ts    # 验证脚本，不是正式架构
+    │   └── scripts/
+    │       ├── MvpLoop.ts        # 验证脚本，场景仍挂它
+    │       └── core/             # S1 起：RunSession / GameBalance
     ├── tests/
     │   ├── README.md
     │   └── core/                 # S0 已配置 vitest + harness；尚无玩法行为测试
