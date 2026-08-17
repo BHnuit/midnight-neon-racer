@@ -1,0 +1,15 @@
+{
+  "name": "midnight-neon-racer",
+  "version": "1.0.0",
+  "private": true,
+  "description": "午夜霓虹 · 极速赛车 — 单页 canvas 赛车,Netlify Functions + Blobs 排行榜",
+  "scripts": {
+    "test": "python3 tests/racer_test_physics.py && python3 tests/racer_test_ghost.py && python3 tests/racer_test_v3.py",
+    "deploy": "netlify deploy --dir . --functions netlify/functions --prod"
+  },
+  "author": "BHnuit / Hant",
+  "license": "MIT",
+  "dependencies": {
+    "@netlify/blobs": "^10.7.13"
+  }
+}

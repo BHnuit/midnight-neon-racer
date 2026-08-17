@@ -1,0 +1,11 @@
+[build]
+  publish = "."
+  functions = "netlify/functions"
+
+[functions]
+  node_bundler = "esbuild"
+
+# 已绑定生产站点,部署前务必确认 siteId,不要新建站
+# site name: euphonious-sprinkles-1c5a7d
+# site id:   31c60f42-99a4-4890-a9a3-aa50ff2c7c92
+# domain:    https://racer.bhnuit.cn
