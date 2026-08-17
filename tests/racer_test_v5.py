@@ -1,4 +1,4 @@
-"""v5: 擦车连击、氮气、车手感、赛博像素、如祜彩蛋"""
+"""v5: 擦车连击、氮气、车手感、赛博像素、如祺彩蛋"""
 from playwright.sync_api import sync_playwright
 import time
 from common import BASE_URL, launch, attach_errors
@@ -100,7 +100,7 @@ with sync_playwright() as p:
     brk = page.evaluate("window.__game.speed")
     check("下滑刹车", brk < 230, f"speed={brk}")
 
-    print("[5] 如祜出行 626 只刷一次")
+    print("[5] 如祺出行 626 只刷一次")
     pre = page.evaluate("""() => {
         window.__game.setScore(625);
         return {
@@ -131,8 +131,8 @@ with sync_playwright() as p:
         }
         return { spawned: window.__game.ruqiSpawned, n: rs.length, onDiv, lanes: rs.map(c => c.lane) };
     }""")
-    check("626 后恰好 1 辆如祜", mid["spawned"] is True and mid["n"] == 1, str(mid))
-    check("如祜在车道里不在护栏线", mid["n"] == 0 or mid["onDiv"] == 0, str(mid))
+    check("626 后恰好 1 辆如祺", mid["spawned"] is True and mid["n"] == 1, str(mid))
+    check("如祺在车道里不在护栏线", mid["n"] == 0 or mid["onDiv"] == 0, str(mid))
     page.evaluate("""() => {
         const r = window.__game.cars.find(c => c.ruqi || c.vType==='ruqi');
         if (r) r.y = 432;
@@ -159,7 +159,7 @@ with sync_playwright() as p:
         }
         return {ok:true, white, teal, red, yellow, box};
     }""")
-    check("如祜涂装有白/青/红/黄", liv.get("ok") and liv["white"]>30 and liv["teal"]>8 and liv["red"]>8 and liv["yellow"]>2, str(liv))
+    check("如祺涂装有白/青/红/黄", liv.get("ok") and liv["white"]>30 and liv["teal"]>8 and liv["red"]>8 and liv["yellow"]>2, str(liv))
     page.evaluate("window.__game.setScore(900); window.__game.spawnRuqi()")
     time.sleep(0.2)
     post = page.evaluate("window.__game.cars.filter(c => c.ruqi || c.vType==='ruqi').length")
