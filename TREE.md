@@ -41,8 +41,10 @@ creation/
     ├── assets/
     │   ├── scene.scene           # 当前色块验证场景
     │   └── scripts/
-    │       ├── MvpLoop.ts        # 验证脚本，场景仍挂它
-    │       └── core/             # S1 起：RunSession / GameBalance
+    │       ├── core/             # RunSession / RoadFactory / PlayerProgress
+    │       ├── app/              # GameDirector
+    │       ├── cocos/            # MainController
+    │       └── platform/         # Dev / WeChat adapters
     ├── tests/
     │   ├── README.md
     │   └── core/                 # S0 已配置 vitest + harness；尚无玩法行为测试
