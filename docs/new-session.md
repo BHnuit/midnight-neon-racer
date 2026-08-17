@@ -9,7 +9,18 @@
 
 ## 这一轮要做什么
 
-[整个项目的开发方案](plan.md)已由 Hans 于 2026-08-18 接受。治理完成不等于 S0 完成。按方案先做 S0 工程基线，再做 S1 正式第二刀。不要把 `MvpLoop` 扩成正式架构。
+本轮开发已收工。S1–S5 **代码**在 Cocos `BHnuit/s1-formal-second-slice` @ `1931557`。`MvpLoop` 已删，场景挂 `MainController`。画面仍是色块。Creator **没有**完整试跑。
+
+下一会话只做 Hans 指定的逐项确认，顺序固定：
+
+1. Gate 2：正式短局/长局手感能不能进下一阶段
+2. Gate 3：五车定位有没有被调参拧歪
+3. Gate 4：正式 AppID + 激励广告位；真机看一次广告
+4. Gate 5：好友榜默认「历史最高」；两个真实微信号对一下顺序
+5. Gate 6：是否解除出图暂停、用哪套图
+6. 微信助手 `run_game`：补包级验证（本会话 BLOCKED）
+
+未确认前不上传、不出正式局内图。一次只确认一项。
 
 ## 两套目录
 
@@ -31,15 +42,13 @@
 
 ## 未关
 
-- 新会话热加载微信小游戏助手后，对 `midnightroad/build/wechatgame/` 补 `run_game` → 预览 → `get_logs`（S0-PKG）
-- 按方案做 S1 正式第二刀：用 `RunSession` / `GameDirector` 替换 `MvpLoop`
+- 上表 6 项确认（见「这一轮要做什么」）
 - 备案截图等以后
 
 ## 实施会话手上有什么
 
-- 已有：词、ADR 0001/0002、前期经 Game Studio / 微信小游戏助手复审的[完整开发方案](plan.md)、当前按需使用的 `game-architect`、画布 720×1280、MCP Pro、第一刀空包、[色块循环](cocos-slice-b-mvp.md)、双仓治理与 Cocos 架构地图
-- 没有：正式第二刀、机位 A 上路、美术进包
-- 第二刀预定范围仍是：选车 + 一段三车道 + 本地结算；广告和好友榜仍不进
+- 已有：词、ADR 0001/0002、已接受的[完整开发方案](plan.md)、S0 基线、S1–S5 正式模块与 `MainController`、16 个 core 测试、选车截图
+- 没有：Creator 完整试跑证据、微信助手 `run_game`、真机广告、双号实榜、正式美术进包
 
 实现时区分两套 MCP：Cocos MCP 改 Creator 资产；微信小游戏助手只接含 `game.js` 的 `midnightroad/build/wechatgame/`，用于构建后的预览、日志、截图与真机证据。不要在契约仓写 MCP 配置。
 

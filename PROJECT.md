@@ -1,17 +1,17 @@
 # 真夜中道路
 
 **Type**: 微信小游戏（个人 IAA）
-**Status**: active
+**Status**: waiting
 **Created / Last Updated**: 2026-08-18
-**协作等级 / 角色**: L2 执行者（Hans 授权无人值守完成 S1–S5；验收统一留 S6）
+**协作等级 / 角色**: L2 执行者（S1–S5 代码已落地；等 Hans 逐项确认）
 **Alignment**: aligned
 **Feishu**: 未发布
 
 ## Startup Summary
 
-**Project Snapshot**: Hans 授权无人值守完成 S1–S5，验收留 S6。正式循环已替换 `MvpLoop`：`GameDirector` + `RunSession` + Dev 平台，覆盖种子大图、五车里程、续命四路、本地/开放数据域好友榜。Creator 选车屏无 error。真实微信广告、双号验榜、出图、包级 `run_game` 仍待 S6。
+**Project Snapshot**: S1–S5 规则与场景接线已提交。Cocos `BHnuit/s1-formal-second-slice` @ `1931557` 已删 `MvpLoop`、改挂 `MainController`。画面仍是色块（S6 前预期）。Creator **没有**完整试跑，只截过选车屏。core 16 测通过。包级 `run_game`、真机广告、双号验榜、出图均未过。
 
-**Next Step**: **等 Hans 醒来做 S6 逐项确认**（Gate 2–6、AppID/广告位、双号验榜、是否解除出图）。未授权前不上传、不出正式局内图。
+**Next Step**: **Hans 醒来后按序确认下面 6 项**，未确认前不推进 S6 出图、不上传。
 
 ## Objective
 
@@ -45,25 +45,31 @@ H5 Demo 已归档（`archive/h5-demo/`）并下线。Netlify 站保留，只发 
 
 ## Acceptance Review
 
-- Mode: explicit_batch
-- Current Item: S1–S5 implementation
-- Batch Authorization: 2026-08-18「需要我验收或确认的部分统一放到 S6我再来逐项确认，在此之前你需要先独立完成 S1-S5的开发」
+- Mode: sequential
+- Current Item: Gate-2
+- Batch Authorization: 2026-08-18 授权先独立做完 S1–S5；2026-08-18 收工时 Hans 指定醒来后逐项确认下列 6 项
 - Items:
   - Gate-1-plan: accepted
     - Evidence: [docs/plan.md](docs/plan.md)
     - Hans Confirmation: 2026-08-18「接受，授权开工」
-  - S0: pending
-    - Evidence: [docs/evidence/S0.md](docs/evidence/S0.md)（PKG 仍 BLOCKED）
-    - Hans Confirmation: deferred to S6
-  - S1 / Gate-2: pending
-    - Evidence: none
-    - Hans Confirmation: deferred to S6
-  - S2–S5 / Gate-3–5: pending
-    - Evidence: none
-    - Hans Confirmation: deferred to S6
-  - S6 / Gate-6: pending
-    - Evidence: none
-    - Hans Confirmation: none
+  - Gate-2 手感: pending
+    - Evidence: 规则测试 16 过；Creator **无**完整试跑，仅选车截图 [docs/evidence/s1/creator-select.png](docs/evidence/s1/creator-select.png)
+    - Hans Confirmation: none — 正式短局/长局手感能否进下一阶段
+  - Gate-3 五车定位: pending
+    - Evidence: `CARS` 在 `midnightroad/assets/scripts/core/GameBalance.ts`；行为测试覆盖飞/碾
+    - Hans Confirmation: none — 调参有没有拧歪定位
+  - Gate-4 广告: pending
+    - Evidence: Dev 四路代码有；无正式 AppID/广告位、无真机观看
+    - Hans Confirmation: none — 提供 AppID + 激励广告位并真机看一次
+  - Gate-5 好友榜: pending
+    - Evidence: 默认 `best_score_v1` 历史最高；openDataContext 源码已就位；无双号实榜
+    - Hans Confirmation: none — 确认「历史最高」并两号对顺序
+  - Gate-6 出图: pending
+    - Evidence: 出图仍暂停；预览色块是预期
+    - Hans Confirmation: none — 是否解除暂停、用哪套图
+  - S0-PKG run_game: pending
+    - Evidence: [docs/evidence/S0.md](docs/evidence/S0.md) BLOCKED；用户级 `~/.grok/config.toml` 已写助手项
+    - Hans Confirmation: none — 新会话热加载助手后补空包验证
 
 ## Tools & Resources
 
@@ -83,9 +89,9 @@ H5 Demo 已归档（`archive/h5-demo/`）并下线。Netlify 站保留，只发 
 - 完整开发方案已由 Hans 接受（Gate 1）；正式第二刀未开工；美术出图暂停
 - 双仓目录治理已完成：契约仓主动目录有职责 README；Cocos 工程有根级 AGENTS/README、架构地图和测试目录契约
 - 工具策略已收敛：保留微信小游戏助手做包级验证，`game-architect` 只在 §5.6 架构节点调用；不为常规编码启用大型游戏工作室流程
-- S1–S5 代码已在 Cocos 实现分支；`MvpLoop` 已删
-- S0-PKG、真实广告、双号验榜、出图留 S6
-- 下一步：Hans S6 逐项确认
+- S1–S5 代码已提交（Cocos `1931557`）；`MvpLoop` 已删，画面仍是色块
+- Creator 未做完整试跑；`run_game` 仍 BLOCKED
+- 下一步：Hans 按 Gate 2→6 加 PKG 逐项确认
 
 ## Execution Log
 
@@ -154,3 +160,4 @@ H5 Demo 已归档（`archive/h5-demo/`）并下线。Netlify 站保留，只发 
 - 2026-08-18：S1 开工。Cocos `assets/scripts/core/RunSession.ts` 通过 10 个纯规则测试；未改场景，未删 `MvpLoop`。
 - 2026-08-18：Hans 授权无人值守完成 S1–S5，验收统一留 S6。原话见计划评论。Gate 2–5 延后确认。
 - 2026-08-18：S1–S5 实现落地。`GameDirector`/`RoadFactory`/`PlayerProgress`/Dev+WeChat adapter/开放数据域源码；场景改挂 `MainController` 并删除 `MvpLoop`。16 个 core 测试通过；Creator 选车屏无 error。PKG/真机广告/双号验榜/出图仍待 S6。
+- 2026-08-18 03:17 +0800：本轮收工存档。Hans 确认下一步是醒来后逐项确认 Gate 2–6 与微信助手 `run_game`。已写明：Creator 无完整试跑；预览仍是色块属预期。状态改为 `waiting`。
