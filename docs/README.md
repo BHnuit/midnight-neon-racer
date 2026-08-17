@@ -19,4 +19,4 @@
 | [art-bible.md](art-bible.md)、[art/README.md](art/README.md) | 美术契约与分册索引（出图暂停） |
 | [art-bible-revision-01.md](art-bible-revision-01.md) | 机位修法 A |
 
-当前唯一待确认方案：[plan.md](plan.md)。Hans 接受后才开始正式第二刀。
+完整方案 [plan.md](plan.md) 已于 2026-08-18 由 Hans 接受。当前执行 S0，通过后再做正式第二刀。

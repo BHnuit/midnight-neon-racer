@@ -1,17 +1,17 @@
 # 真夜中道路
 
 **Type**: 微信小游戏（个人 IAA）
-**Status**: waiting
+**Status**: active
 **Created / Last Updated**: 2026-08-18
-**协作等级 / 角色**: L2 执行者（方向由 Hans 定；方案验收前不正式开工）
+**协作等级 / 角色**: L2 执行者（Hans 已接受方案；按 S0→S1 开工）
 **Alignment**: aligned
 **Feishu**: 未发布
 
 ## Startup Summary
 
-**Project Snapshot**: 第一版需求已对齐。目标平台只有微信小游戏。框架两轮已过。H5 已归档并下线 Netlify（站还留着，只发停机页）。完整开发方案前期已用 Game Studio 与微信小游戏助手复审，补齐需求追溯、风险、证据和包级验证链，待 Hans 验收。Game Studio 已卸载，`game-architect` 已安装为按需架构顾问；双仓目录治理、README 责任边界和 Cocos 实现架构地图已经落地。这不是 S0 完成，也没有改正式玩法。正式第二刀仍未开工，出图暂停。
+**Project Snapshot**: 第一版需求已对齐。目标平台只有微信小游戏。框架两轮已过。H5 已归档并下线 Netlify。完整开发方案已由 Hans 于 2026-08-18 接受。S0 工程基线已建立：Cocos `dda5a64`，测试/typecheck 可空跑，模板与 3.8.6 默认一致，Creator 能打开色块场景。微信助手 `run_game` 本会话未挂上，S0-PKG 为 BLOCKED。正式玩法仍是 `MvpLoop`，出图暂停。
 
-**Next Step**: **Hans 审阅并接受 [完整开发方案](docs/plan.md)**。接受后，实施 Agent 按方案先做 S0 工程基线，再做 S1 正式第二刀；接受前不改正式玩法代码。
+**Next Step**: **在新会话热加载微信小游戏助手后补 S0-PKG**，同时按方案做 S1 正式第二刀（替换 `MvpLoop`，选跑车 + 短段 + 本地四项结算）。
 
 ## Objective
 
@@ -43,6 +43,22 @@ H5 Demo 已归档（`archive/h5-demo/`）并下线。Netlify 站保留，只发 
 
 正式第二刀范围仍是「选车 + 一段三车道 + 本地结算」，按方案 S1 实施；广告和好友榜不进入这一刀。
 
+## Acceptance Review
+
+- Mode: sequential
+- Current Item: S0
+- Batch Authorization: none
+- Items:
+  - Gate-1-plan: accepted
+    - Evidence: [docs/plan.md](docs/plan.md) 2026-08-18 专业复审版
+    - Hans Confirmation: 2026-08-18「接受，授权开工」
+  - S0: pending
+    - Evidence: [docs/evidence/S0.md](docs/evidence/S0.md)（CORE/CREATOR/TEMPLATE/GIT PASS；PKG BLOCKED）
+    - Hans Confirmation: none
+  - S1 / Gate-2: pending
+    - Evidence: none
+    - Hans Confirmation: none
+
 ## Tools & Resources
 
 - 产品契约仓库：`BHnuit/midnight-neon-racer`（本目录）
@@ -58,10 +74,11 @@ H5 Demo 已归档（`archive/h5-demo/`）并下线。Netlify 站保留，只发 
 ## Progress Snapshot
 
 - 需求已对齐；两轮框架验证已过；H5 已归档；Netlify 已下线
-- 完整开发方案已完成专业复审并待 Hans 验收；正式第二刀未开工；美术出图暂停
+- 完整开发方案已由 Hans 接受（Gate 1）；正式第二刀未开工；美术出图暂停
 - 双仓目录治理已完成：契约仓主动目录有职责 README；Cocos 工程有根级 AGENTS/README、架构地图和测试目录契约
 - 工具策略已收敛：保留微信小游戏助手做包级验证，`game-architect` 只在 §5.6 架构节点调用；不为常规编码启用大型游戏工作室流程
-- 下一步：Hans 接受方案后，按 S0 建基线、S1 实施正式第二刀
+- S0 工程基线已落地（Cocos `dda5a64`）；S0-PKG 待助手 MCP 热加载
+- 下一步：补空包助手验证，并开始 S1 正式第二刀
 
 ## Execution Log
 
@@ -125,3 +142,5 @@ H5 Demo 已归档（`archive/h5-demo/`）并下线。Netlify 站保留，只发 
 - 2026-08-18：按 SkillHub 指南安装并校验 `@tencent-adm/weixin-minigame-helper@1.0.1` 与 `@user_5e9ef3eb/game-studio@1.0.0`。用两者复审契约仓、Cocos 磁盘结构和完整方案：修正旧名/多点触控表述，补现状与目标结构、玩家体验支柱、系统依赖、状态/边界/调参、风险、追溯、证据格式，以及 Cocos 构建后 `run_game` / `get_logs` / 截图 / 真机验证链。未改正式玩法代码。
 - 2026-08-18：按 Game Studio 的阶段识别、系统映射、架构落位和 QA 交接方法治理双仓文件树。契约仓为主动维护的 `docs/`、`assets/minigame/` 各层补职责 README；新增 [ADR 0002](docs/adr/0002-dual-repo-governance.md)。Cocos 工程新增根 AGENTS/README、`docs/architecture.md`、`tests/core/` 说明并加固忽略规则。为避免 Asset Database 与模板污染，没有在 Cocos `assets/` 或 `build-templates/wechatgame/` 内塞 README，也未改 `.scene/.prefab/.anim/.meta` 或玩法代码。
 - 2026-08-18：按 Hans 决定卸载 `@user_5e9ef3eb/game-studio`，安装 `game-architect` 作为架构知识顾问。后续按方案 §5.6 仅在 S0/S1 架构落地、S2 种子地图、重大需求变更和已测出的性能瓶颈节点调用；常规实现、修 Bug、调数值、微信包验证不调用。保留前期 Game Studio 复审记录，不再把它写成当前依赖。
+- 2026-08-18：Hans 接受 [完整开发方案](docs/plan.md) 并授权按 S0→S1 开工。原话：「接受，授权开工」。Gate 1 关闭。未改正式玩法；进入 S0 工程基线。
+- 2026-08-18：完成 S0 工程部分。Cocos 首个基线提交 `dda5a64`，分支 `main` 与 `BHnuit/s1-formal-second-slice`。`npm test` / `typecheck:core` 通过；`game.ejs` 与 Creator 3.8.6 默认一致；Creator 打开 `scene.scene` 无断裂引用。S0-PKG 因本会话无微信助手 MCP 标 BLOCKED。未改正式玩法。

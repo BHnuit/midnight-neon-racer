@@ -43,7 +43,7 @@ creation/
     │   └── scripts/MvpLoop.ts    # 验证脚本，不是正式架构
     ├── tests/
     │   ├── README.md
-    │   └── core/README.md        # S0 测试边界，尚未配置测试工具
+    │   └── core/                 # S0 已配置 vitest + harness；尚无玩法行为测试
     ├── build-templates/
     │   ├── README.md             # 模板审计规则
     │   └── wechatgame/           # 微信模板，不塞说明文件
@@ -86,7 +86,7 @@ midnightroad/
     └── openDataContext/          # S5 才创建的好友榜开放数据域
 ```
 
-治理框架已经建立，但 S0 尚未完成：还没有测试工具、独立 typecheck、模板审计或 Cocos 基线提交。不要把目录说明当作正式玩法进度，也不要提前创建无消费者的 manager、adapter 或序列化资产。
+治理框架已经建立。S0 工程基线已有 Cocos commit `dda5a64`、独立 typecheck 与 vitest 空跑；微信助手空包验证仍 BLOCKED。不要把目录说明当作正式玩法进度，也不要提前创建无消费者的 manager、adapter 或序列化资产。
 
 ## 本仓库根上放什么
 
@@ -96,4 +96,4 @@ midnightroad/
 
 ## 后续从哪里开始
 
-当前唯一产品决策门是 Hans 验收 [docs/plan.md](docs/plan.md)。接受后从 S0 建立可恢复基线，再做 S1 正式第二刀；结论写回 `PROJECT.md` / `docs/adr/`，证据按 `docs/evidence/README.md` 归档。
+Hans 已于 2026-08-18 接受 [docs/plan.md](docs/plan.md)。当前从 S0 建立可恢复基线，再做 S1 正式第二刀；结论写回 `PROJECT.md` / `docs/adr/`，证据按 `docs/evidence/README.md` 归档。

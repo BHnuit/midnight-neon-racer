@@ -8,7 +8,7 @@
 
 | | 是什么 | 状态 |
 | --- | --- | --- |
-| **真夜中道路** | Cocos 3.8.6 → 微信小游戏 | 主线。需求已对齐，完整方案待 Hans 验收 |
+| **真夜中道路** | Cocos 3.8.6 → 微信小游戏 | 主线。需求已对齐，方案已接受，当前 S0 |
 | **午夜霓虹 · 极速赛车** | [archive/h5-demo/](archive/h5-demo/) | 已归档且已下线 |
 
 ## 正式小游戏
@@ -21,7 +21,7 @@
 - Cocos MCP 负责编辑器资产；微信小游戏助手 MCP 只验证 Creator 导出的 `build/wechatgame/`。两者不是同一个服务，不要混用工程路径
 - 刷新微信导出包后，按 [完整方案](docs/plan.md) 执行助手 `run_game` → 打开预览 → `get_logs`；真机与上传必须另有授权和正式账号配置
 - 局内出图暂停。机位 A 在 [docs/art-bible-revision-01.md](docs/art-bible-revision-01.md)
-- 完整方案在 [docs/plan.md](docs/plan.md)。Hans 接受后才按 S0/S1 正式开工
+- 完整方案在 [docs/plan.md](docs/plan.md)。Hans 已于 2026-08-18 接受，按 S0 再 S1 开工
 - `game-studio` 只用于本轮前期顾问，已卸载；后续架构问题按 [docs/plan.md](docs/plan.md) §5.6 按需调用 `game-architect`，不把它当每次开发的工作流
 - 双仓职责按 [ADR 0002](docs/adr/0002-dual-repo-governance.md) 执行。契约仓主动目录逐层 README；Cocos `assets/` 不放 README，职责统一写在工程 `docs/architecture.md`
 

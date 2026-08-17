@@ -2,7 +2,7 @@
 
 这里记录 S0–S7 的可复现验证结果，不存整个 `midnightroad/build/`，也不把 DEV 模拟证据冒充微信真机证据。
 
-每刀使用 `S0.md` 到 `S7.md`。证据 ID 格式：
+每刀使用 `S0.md` 到 `S7.md`。S0 当前记录在 [S0.md](S0.md)。证据 ID 格式：
 
 ```text
 S<n>-CORE-<nn>
