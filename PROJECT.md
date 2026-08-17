@@ -1,0 +1,118 @@
+# 午夜霓虹 · 极速赛车
+
+**Type**: 微信小游戏（个人 IAA）
+**Status**: waiting
+**Created / Last Updated**: 2026-08-17
+**协作等级 / 角色**: L2 执行者（方向由 Hans 定；方案写完前不正式开工）
+**Alignment**: aligned
+**Feishu**: 未发布
+
+## Startup Summary
+
+**Project Snapshot**: 第一版需求已对齐。目标平台只有微信小游戏。框架两轮已过。H5 已归档并下线 Netlify（站还留着，只发停机页）。正式方案未写，出图暂停。
+
+**Next Step**: **新开一轮会话**写整个项目的开发方案（落 `docs/plan.md`）。本轮不再改玩法。
+
+## Objective
+
+上架微信小游戏 **真夜中道路**。第一版走个人主体、IAA。核心循环是种子大图短局得分，不以 Demo 的一命闪避为契约，也不用圈。
+
+## Scope
+
+第一版产品边界以 `CONTEXT.md` 为准。文件树见 [TREE.md](TREE.md)。
+
+做：个人 IAA、动作/跑酷、12+、种子大图约 5 分钟、三车道滑动换道、同时氮换道、五车+里程、分值 A、一次广告续命、结算好友榜、Cocos 导出微信包。
+
+不做（第一版）：内购、全球榜、幻影陪跑、连击、手写正式包 `game.js`、把 Demo 当提审包、局内精细出图（暂停）。
+
+H5 Demo 已归档（`archive/h5-demo/`）并下线。Netlify 站保留，只发 `archive/offline/`。以后有新 Demo 再开。
+
+## Acceptance Criteria
+
+本轮（访谈 + 框架）已满足：
+
+- AC-align：Hans 确认复述即第一版；词在 `CONTEXT.md`，决定在 [ADR 0001](docs/adr/0001-first-version-loop.md)
+- AC-pipe：空场景微信包能编（第一刀 A）；Creator 预览里色块循环能选车/开/结算（[slice-b](docs/cocos-slice-b-mvp.md)）；MCP 能操作 `midnightroad`
+
+第一版上架验收（**尚未做**，等计划会话拆开）：
+
+- AC-play：能选车、开种子大图、当场看到四项分、可本地结算
+- AC-cars：五车定位与里程节奏符合契约
+- AC-iaa：一次激励续命；结算好友榜；无内购
+- AC-ship：Cocos 微信包在开发者工具/真机可玩，名称与备案稿一致
+
+第二刀预定范围仍是「选车 + 一段三车道 + 本地结算」，怎么切由下一轮计划决定。
+
+## Tools & Resources
+
+- 产品契约仓库：`BHnuit/midnight-neon-racer`（本目录）
+- Cocos 工程（不在本 git 根下）：`/Users/hant/工作台/projects/creation/midnightroad/`
+- 微信导出包：`midnightroad/build/wechatgame/`
+- 文件树：[TREE.md](TREE.md)；文档索引：[docs/README.md](docs/README.md)
+- Netlify（已下线，站还留着）：site `31c60f42-99a4-4890-a9a3-aa50ff2c7c92`；publish=`archive/offline/`；旧游戏在 `archive/h5-demo/`
+- Cocos MCP 3.x Pro：`midnightroad/extensions/cocos-mcp-server/`（v1.7.9）；`http://127.0.0.1:21569/mcp`。不要往仓库扔 `.mcp.json`
+
+## Progress Snapshot
+
+- 需求已对齐；两轮框架验证已过；H5 已归档；Netlify 已下线
+- 正式第二刀未开工。美术出图暂停
+- 下一轮：写 `docs/plan.md`
+
+## Execution Log
+
+- 2026-08-17：重入项目，补 `PROJECT.md`，`Alignment: pending`。先读现有架构，再按 grill-with-docs 对齐游戏框架。未实施玩法改动。
+- 2026-08-17：Hans 确认第一版 **个人主体 + IAA**。术语写入 `CONTEXT.md`。下一问：第一版提审切片。
+- 2026-08-17：Hans 确认账号已注册、备案与开发并行，第一版选 **重做循环**。下一问：玩家在比什么。
+- 2026-08-17：Hans 定方向为肉鸽短局赛车：3–5 圈约 10 分钟、每局换图、局外成长、局内随机道具、目标单场得分。下一问：圈的空间含义。
+- 2026-08-17：Hans 取消「圈」，改为一张种子大图从头到尾；路程按满速约 5 分钟。下一问：必经赛道还是分叉选路。
+- 2026-08-17：Hans 确认大图为 **必经赛道**（选项 A）。下一问：弯是真转向还是三车道路段变化。
+- 2026-08-17：Hans 确认 **三车道路段 + 轻量操作**（选项 A）。默认滑动换道，不做摇杆/方向盘。下一问：一局如何结束。
+- 2026-08-17：Hans 确认结算 **C**：可看广告续 1 心（一局 1 次）。IAA 开发量按「一块激励视频 + 已选上架路径」计，不加横幅/插屏。下一问：局外成长怎么获得。
+- 2026-08-17：Hans 确认局外成长为 **里程解锁新车，新车生命更高**；护盾/氮仍当局内。默认里程为账号累计（含未完赛已跑路程）。下一问：车是阶梯还是取舍。
+- 2026-08-17：Hans 确认车库 **各有取舍**（B）。下一问：多生命换什么。
+- 2026-08-17：Hans 定为四辆定位车：小货车（命）、跑车（更快/得分）、摩托车（窄、1 心）、飞行汽车（主动飞、无视交通）。撤销「后解锁生命更高」。下一问：飞行规则。
+- 2026-08-17：Hans 定为两条进阶线：跑车→飞行汽车、小货车→压路机。飞行选 **B**：按住飞，飞量表替换氮表。摩托车是否保留未确认。下一问：压路机怎么硬。
+- 2026-08-17：Hans 确认小货车是厚护盾条、多抗；压路机是长按氮条碾所有车和护栏。「小火车」按小货车记录。下一问：护盾条与心如何叠。
+- 2026-08-17：Hans 确认全车 1 心；除摩托车外有保险杠（规则同 A）；局内有氮气装置。局外不再加心。摩托车留在车库。下一问：新号车与解锁顺序。
+- 2026-08-17：Hans 确认解锁顺序 **A**（跑车→小货车→摩托车→飞行/压路机），续命为 **回满开局状态**（1 心+满杠）。下一问：得分构成。
+- 2026-08-17：Hans 确认得分 **A**（路程+擦车+碾压+完赛，飞行只计路程），加分提示要当场可读；连击留后期。下一问：种子路段随机什么。
+- 2026-08-17：Hans 确认种子路段要五件套，并加天气滤镜（晴雨雪雾风）和傍晚→清晨；明确不加分叉/高度。大风按不推车收。下一问：天气整局锁定还是途中变。
+- 2026-08-17：Hans 确认天色/天气 **A**：每局傍晚→清晨，天气整局一种滤镜。下一问：备案二级类目。
+- 2026-08-17：Hans 确认二级类目 **休闲**（后台已选定）。下一问：技术栈。
+- 2026-08-17：Hans 确认技术栈 **自研 Canvas2D**（A）。不用 Cocos/Unity。下一问：是否开做最小包。
+- 2026-08-17：Hans 选择继续访谈（好友榜+数值），先定游戏名。
+- 2026-08-17：Hans 定名 **真夜中道路**。下一问：好友榜。
+- 2026-08-17：Hans 自定介绍文案；头像要赛博像素但更干净，参考格子旗速度标。下一问：两张新头像选哪张。
+- 2026-08-17：Hans 定头像为 A 构图、红色车、144×144 PNG（`assets/wechat-avatar-144.png`）。下一问：好友榜。
+- 2026-08-17：Hans 确认头像已上传。下一问：好友榜。
+- 2026-08-17：Hans 确认第一版社交 **A 结算好友榜**。全球榜和幻影以后再做。下一问：四项得分比重。
+- 2026-08-17：Hans 确认得分 **B**（技巧分多、求花活爽感）。默认擦车每车一次、磨蹭不刷、碾压仅技能期间。下一问：保险杠抗几下。
+- 2026-08-17：Hans 确认保险杠 **A**（薄 1 / 厚 3 / 摩托 0）。下一问：里程解锁节奏。
+- 2026-08-17：Hans 确认里程节奏 **B**（约 2/6/15 局）。备案场景/玩法/系统文案写入 `docs/wechat-beian-copy.md`。下一问：益智类目是否改。
+- 2026-08-17：Hans 将类目改为 **动作/跑酷**；备案字段只留本地，截图齐了再开口提交。
+- 2026-08-17：Hans 确认适龄 **12+**。下一问：局内美术。
+- 2026-08-17：Hans 确认美术 **A 赛博像素整套重画**；增加 `mayonaka-art` 技能与 `docs/art-bible.md`。下一问：技能条时长。
+- 2026-08-17：Hans 确认技能条 **B**（约 2 秒、满表两次、开局半表）。下一问：是否结束对齐。
+- 2026-08-17：Hans 选先出美术锚点。已交跑车正后视图（`mayonaka-art`），未写玩法。
+- 2026-08-17：Hans 指定 cyber pixel city，并安装 TaiT CRT + pixel-asset-master。风格写入 art-bible；公路预览在 `assets/minigame/previews/`。
+- 2026-08-17：三车道预览重画（旧双车道线已刮掉）。Hans 指定原图两侧品红光带只在氮加速时出现；写入 art-bible / CONTEXT，预览 `play-night-3lane-nitro.jpg`。
+- 2026-08-17：Hans 确认风格留、构图按修订 01。落下 `docs/art/`（色卡、像素格、图层、CRT）和 `assets/minigame/palette/`、`layers/`。未改透视脚本，等选定 A/B/C。
+- 2026-08-17：Hans 点头先做修法 A。`_paint_3lane.py` 改为 `VX,VY=376,797`、`LANE_AT_CAR=340`。验收：消失点/夹角已 PASS，车位未动；底边退让、接地、点阵、空天仍 FAIL。
+- 2026-08-17：Hans 确认透视对，并要为出图 agent 补框架。写下 `docs/art/roadside-approach.md`、`car-grounding.md`、`sky-catalog.md`。中景定为纵向街墙+卡片按 1/z 推近，不重烤整张底板。
+- 2026-08-17：傍晚进城空天第一版被否（色卡硬切条，没用参考）。重做为 ref-5 扫描线 + ref-3 暖边取样，扁日落在橙带里。样张 `play-dusk-approach.jpg`。
+- 2026-08-17：Hans 判定天空观感仍不合格，美术框架先跳过。技术栈从自研 Canvas2D **改回 Cocos**（Creator 3.8.6+，MCP 3.x Pro + Codex/Cursor，导出到微信开发者工具）。手搓 `game.js` 计划作废。`CONTEXT.md` 用「Cocos工程」替换「自研画布」。
+- 2026-08-17：把官方「学习新手教程」补进附录 [docs/wechat-minigame-start.md](docs/wechat-minigame-start.md)。
+- 2026-08-17：Hans 选第一刀 **A**。过线=Cocos 空包在微信开发者工具里能跑。写入 `CONTEXT.md` 与 [docs/cocos-slice-a.md](docs/cocos-slice-a.md)。不在本会话手搓 game.js。
+- 2026-08-17：工程落在 `/Users/hant/工作台/projects/creation/midnightroad/`。MCP 插件已就位；`npm install` 完成。该包无 `build` 脚本，`dist/main.js` 已存在。待 Creator 里启用扩展。
+- 2026-08-17：Grok 用户配置接上 Cocos MCP：`http://127.0.0.1:21569/mcp`。doctor 健康，16 工具。
+- 2026-08-17：Cocos「发布到微信小游戏」手册补进 [docs/cocos-publish-wechatgame.md](docs/cocos-publish-wechatgame.md)。
+- 2026-08-17：第一刀 A 过线。`midnightroad/build/wechatgame` 已导入微信开发者工具，空场景黑屏。起始场景 `assets/scene.scene`。
+- 2026-08-17：Hans 准备重开会话。后半段已写回：工程名 `midnightroad`、机位修法 A、出图暂停、第一刀已过、第二刀未开、Grok MCP 要新会话。不要提交仓库内 `.mcp.json`。
+- 2026-08-17：新 Grok 会话已接到 Cocos MCP（16 个 Pro 工具，工程 `midnightroad`，端口 21569）。对照 https://github.com/DaxianLee/cocos-mcp-server 的 Pro 说明，把用法写入 [docs/cocos-mcp-pro.md](docs/cocos-mcp-pro.md)。第二刀仍未开。
+- 2026-08-17：Hans 把工程设计分辨率改成 **720×1280**（`project_info` 已核）。写入 `CONTEXT.md`「画布」。未关仍是：第二刀是否开工、换道时能否同时按氮、四项得分数字。
+- 2026-08-17：Hans 确认 **同时氮换道**。写入 `CONTEXT.md`。下一问：四项得分数字（推荐方案已给出，待选）。
+- 2026-08-17：Hans 确认分值 **A**：路程 3000 / 擦车 +200 / 碾压 +500 / 完赛 +1200；短段完赛按比例、地板 +300。写入 `CONTEXT.md`「分值」。下一问：是否开第二刀。
+- 2026-08-17：Hans 确认复述即第一版，并定调：本轮只验证需求 + 开发框架；第二刀实现前必须 **另开会话拆开发计划**。`Alignment: aligned`。落下 [ADR 0001](docs/adr/0001-first-version-loop.md)。MCP 复核：`midnightroad` ready，画布 720×1280。未写玩法代码。
+- 2026-08-17：Hans 澄清第二轮验证 = **最小 MVP，不是正式开工**。在 `scene.scene` 用 MCP 搭了选车/三车道/本地结算，脚本 `midnightroad/assets/scripts/MvpLoop.ts`。预览已见到三屏（选车、赛道 HUD 路程 810、结算 路程/擦车/碾压/完赛）。记下 [docs/cocos-slice-b-mvp.md](docs/cocos-slice-b-mvp.md)。正式计划仍待下轮会话。
+- 2026-08-17：本轮收工。进度写回；H5 Demo 整包迁到 `archive/h5-demo/`；根 `netlify.toml` 改指向归档以免误发空站。落下 [TREE.md](TREE.md)、[docs/README.md](docs/README.md)。下一轮会话写整个项目方案（`docs/plan.md`）。
+- 2026-08-17：Hans 确认 Netlify 先下线，目标平台只留微信小游戏。publish 改为 `archive/offline/`（停机页），站点不删，以后有新 Demo 再开。

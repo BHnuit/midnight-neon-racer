@@ -1,0 +1,16 @@
+{
+  "canvas": { "w": 720, "h": 1280 },
+  "grid": 2,
+  "composite": "bottom-to-top",
+  "layers": [
+    { "id": "00-sky", "z": 0, "switch": ["dusk", "night", "dawn"], "notes": "天色底 + 一个空天主件。见 sky-catalog。" },
+    { "id": "01-far", "z": 1, "switch": ["theme"], "notes": "远剪影，楼脚齐 y_底边。几乎不推近。" },
+    { "id": "02-mid", "z": 2, "switch": ["theme"], "notes": "128x2048 街墙长图 + 卡片。按 1/z 推近，禁止预烤梯形。" },
+    { "id": "03-near", "z": 3, "switch": ["theme"], "notes": "近景护栏、路肩。路肩宽 d=30–120，左右同值。" },
+    { "id": "04-road", "z": 4, "switch": ["width"], "notes": "行车面 + 三车道标线。一份地面、一个消失点。" },
+    { "id": "05-nitro", "z": 5, "switch": ["off", "on"], "notes": "氮光带。默认 off。不进车道、不盖虚线。" },
+    { "id": "06-cars", "z": 6, "switch": ["roster"], "notes": "玩家车与对向车精灵，禁止烧进底板。" },
+    { "id": "07-fx", "z": 7, "switch": ["weather", "grounding"], "notes": "天气粒子、尾灯落光、车底压印、加分飘字。" },
+    { "id": "08-hud", "z": 8, "switch": ["digits"], "notes": "心、保险杠格、技能条、分数数字。赛道上不套 CRT。" }
+  ]
+}

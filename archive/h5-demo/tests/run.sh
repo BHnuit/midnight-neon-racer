@@ -1,9 +1,12 @@
 #!/usr/bin/env bash
 set -euo pipefail
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
+REPO="$(cd "$ROOT/../.." && pwd)"
 cd "$ROOT"
 
-if [[ -x "$ROOT/.venv/bin/python" ]]; then
+if [[ -x "$REPO/.venv/bin/python" ]]; then
+  PY="$REPO/.venv/bin/python"
+elif [[ -x "$ROOT/.venv/bin/python" ]]; then
   PY="$ROOT/.venv/bin/python"
 elif [[ -x /tmp/ptest-venv/bin/python ]]; then
   PY=/tmp/ptest-venv/bin/python

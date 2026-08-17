@@ -1,0 +1,26 @@
+{
+  "name": "游戏01",
+  "source": "tait-crt-interface-skill",
+  "canonical": [
+    { "id": "cyan", "hex": "#22e6da", "role": "霓虹青", "use": ["hud-ok", "menu-accent", "window-light"] },
+    { "id": "amber", "hex": "#fabf37", "role": "琥珀", "use": ["score", "skill-hot", "menu-warn"] },
+    { "id": "magenta", "hex": "#e90cbe", "role": "品红", "use": ["curb", "nitro-band", "tail-glow", "menu-hot"] },
+    { "id": "electric", "hex": "#2a4ac5", "role": "电蓝", "use": ["far-city", "menu-panel"] },
+    { "id": "indigo", "hex": "#1d2c6b", "role": "夜靛", "use": ["far-fade", "menu-field"] }
+  ],
+  "track_only": [
+    { "id": "void", "hex": "#0a0d16", "role": "底", "use": ["sky-top", "road-lo"] },
+    { "id": "dusk", "hex": "#1c1430", "role": "暮底", "use": ["sky-low", "road-base"] },
+    { "id": "car-red", "hex": "#ee190b", "role": "店招红", "use": ["paoche-body"], "from": "assets/wechat-avatar-144.png" }
+  ],
+  "dither_steps": [
+    { "id": "road-lo", "hex": "#0a0814", "of": "void" },
+    { "id": "road-base", "hex": "#140a28", "of": "dusk" },
+    { "id": "road-hi", "hex": "#2a1a44", "of": "indigo" }
+  ],
+  "rules": {
+    "menu_crt": "only canonical 5 colors; no track_only, no dither_steps, no computed gray",
+    "track": "canonical + track_only + same-hue dither_steps; no new hues",
+    "hud_on_track": "canonical only for glyphs and bars"
+  }
+}

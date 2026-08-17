@@ -8,3 +8,5 @@ __pycache__/
 .DS_Store
 .env
 *.log
+.orca/
+archive/h5-demo/.venv/

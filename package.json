@@ -2,10 +2,10 @@
   "name": "midnight-neon-racer",
   "version": "1.0.0",
   "private": true,
-  "description": "午夜霓虹 · 极速赛车 — 单页 canvas 赛车,Netlify Functions + Blobs 排行榜",
+  "description": "真夜中道路 · 产品契约仓。目标平台只有微信小游戏。Netlify 已停机。",
   "scripts": {
-    "test": "bash tests/run.sh",
-    "deploy": "netlify deploy --dir . --functions netlify/functions --prod"
+    "test": "node -e \"console.log('目标平台是微信小游戏，仓库根没有产品测试。H5 已下线。');\"",
+    "deploy:offline": "echo '用已有 siteId 发 archive/offline，禁止新建站'"
   },
   "author": "BHnuit / Hant",
   "license": "MIT",

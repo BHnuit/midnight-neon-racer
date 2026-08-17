@@ -1,11 +1,8 @@
 [build]
-  publish = "."
-  functions = "netlify/functions"
+  publish = "archive/offline"
 
-[functions]
-  node_bundler = "esbuild"
-
+# 2026-08-17 起站点停机，只发 archive/offline。不要指回 h5-demo。
 # 已绑定生产站点,部署前务必确认 siteId,不要新建站
 # site name: euphonious-sprinkles-1c5a7d
 # site id:   31c60f42-99a4-4890-a9a3-aa50ff2c7c92
-# domain:    https://racer.bhnuit.cn
+# domain:    https://racer.bhnuit.cn（已下线，仅留坑）

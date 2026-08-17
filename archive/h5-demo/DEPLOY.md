@@ -2,6 +2,10 @@
 
 给 grokbot / 后续开发者。不要把 Netlify token、GitHub token、账号密码写进仓库。
 
+## 状态（2026-08-17）
+
+**已下线。** 不要再把本目录发到生产。根 `netlify.toml` 指向 `archive/offline/`。站点保留，禁止另建。
+
 ## 生产站点（已存在，禁止另建）
 
 | 项 | 值 |
@@ -31,7 +35,8 @@ cat .netlify/state.json   # 部署前必须确认
 
 ```bash
 npm install
-netlify deploy --dir . --functions netlify/functions --prod
+# 在仓库根执行。publish/functions 已指到 archive/h5-demo
+netlify deploy --dir archive/h5-demo --functions archive/h5-demo/netlify/functions --prod
 ```
 
 依赖必须在**仓库根** `package.json`（`@netlify/blobs`）。放到 `netlify/functions/package.json` 不会被装进函数包。
