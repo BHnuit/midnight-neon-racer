@@ -17,6 +17,8 @@ creation/
 │   │   ├── new-session.md        # 新会话恢复入口
 │   │   ├── adr/README.md         # 稳定决策与编号规则
 │   │   ├── art/README.md         # 美术分册索引；出图暂停
+│   │   ├── ui-copy.md            # 选车图鉴与结算一行
+│   │   ├── color-block-now.md    # 色块现状与屏幕图示；界面审查入口
 │   │   └── evidence/README.md    # 验证证据契约
 │   ├── assets/
 │   │   ├── README.md             # 素材进入/排除边界
@@ -39,7 +41,7 @@ creation/
     │   ├── README.md
     │   └── architecture.md       # assets 目标目录与模块职责地图
     ├── assets/
-    │   ├── scene.scene           # 当前色块验证场景
+    │   ├── scenes/Main.scene     # 正式色块入口
     │   └── scripts/
     │       ├── core/             # RunSession / RoadFactory / PlayerProgress
     │       ├── app/              # GameDirector
@@ -47,7 +49,7 @@ creation/
     │       └── platform/         # Dev / WeChat adapters
     ├── tests/
     │   ├── README.md
-    │   └── core/                 # S0 已配置 vitest + harness；尚无玩法行为测试
+    │   └── core/                 # vitest 37 测；不进 Creator
     ├── build-templates/
     │   ├── README.md             # 模板审计规则
     │   └── wechatgame/           # 微信模板，不塞说明文件
@@ -90,7 +92,7 @@ midnightroad/
     └── openDataContext/          # S5 才创建的好友榜开放数据域
 ```
 
-治理框架已经建立。S0 工程基线已有 Cocos commit `dda5a64`、独立 typecheck 与 vitest 空跑；微信助手空包验证仍 BLOCKED。不要把目录说明当作正式玩法进度，也不要提前创建无消费者的 manager、adapter 或序列化资产。
+治理框架已建立。玩法色块已进 midnightroad（基线 `de97611` 上还有未提交改动），37 个 core 测试。界面审查看 [docs/color-block-now.md](docs/color-block-now.md)。微信助手空包验证仍 BLOCKED。不要提前创建无消费者的 manager 或序列化资产。
 
 ## 本仓库根上放什么
 
@@ -100,4 +102,4 @@ midnightroad/
 
 ## 后续从哪里开始
 
-Hans 已于 2026-08-18 接受 [docs/plan.md](docs/plan.md)。当前从 S0 建立可恢复基线，再做 S1 正式第二刀；结论写回 `PROJECT.md` / `docs/adr/`，证据按 `docs/evidence/README.md` 归档。
+Hans 已于 2026-08-18 接受 [docs/plan.md](docs/plan.md)。玩法色块先停；下一会话按 [docs/color-block-now.md](docs/color-block-now.md) 审界面。结论写回 `PROJECT.md` / `docs/adr/`。

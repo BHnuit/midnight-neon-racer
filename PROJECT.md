@@ -1,17 +1,17 @@
 # 真夜中道路
 
 **Type**: 微信小游戏（个人 IAA）
-**Status**: in_progress
+**Status**: waiting
 **Created / Last Updated**: 2026-08-18
-**协作等级 / 角色**: L2 执行者（Gate 2–3、5 规则已过；Gate 4 广告延后；下一项 Gate 6）
+**协作等级 / 角色**: L2 执行者（Gate 2–3、5 规则已过；Gate 4 广告延后；玩法色块先停，下一项界面审查）
 **Alignment**: aligned
 **Feishu**: 未发布
 
 ## Startup Summary
 
-**Project Snapshot**: Gate 2–3 已过。第一版无广告。好友榜规则已锁为历史最高单局分。双号实榜以后再验。画面仍是色块。Gate 6 与 `run_game` 未过。
+**Project Snapshot**: 玩法色块先停在 midnightroad：机位 A、九层、发车/选车/说明/开车/结算、施工与路形互斥。画面仍是色块。UNLOCK_ALL + slice 开着。界面审查入口 [docs/color-block-now.md](docs/color-block-now.md)。Gate 6 出图暂停。`run_game` 未过。
 
-**Next Step**: **Gate 6：出图**。是否解除暂停、用哪套图。未确认前不出正式局内图、不上传。
+**Next Step**: **Codex 按 [docs/color-block-now.md](docs/color-block-now.md) 审查并优化色块界面**（发车/选车/说明/HUD/结算可读性）。不改玩法，不接出图。
 
 ## Objective
 
@@ -89,9 +89,9 @@ H5 Demo 已归档（`archive/h5-demo/`）并下线。Netlify 站保留，只发 
 - 完整开发方案已由 Hans 接受（Gate 1）；S1–S5 代码已落地；美术出图暂停
 - 双仓目录治理已完成：契约仓主动目录有职责 README；Cocos 工程有根级 AGENTS/README、架构地图和测试目录契约
 - 工具策略已收敛：保留微信小游戏助手做包级验证，`game-architect` 只在 §5.6 架构节点调用；不为常规编码启用大型游戏工作室流程
-- S1–S5 代码已提交（Cocos `1931557`）；`MvpLoop` 已删，画面仍是色块
+- S1–S5 代码已提交（Cocos `1931557`）；已锁规则色块已落地（midnightroad `de97611` 之后还有未提交测试与结算屏）
 - Hans 已试玩并否定离散换道；`run_game` 仍 BLOCKED
-- 下一步：Gate 6 是否解除出图暂停
+- 下一步：Codex 审查并优化色块界面；玩法先停。再问 Gate 6
 
 ## Execution Log
 
@@ -170,3 +170,20 @@ H5 Demo 已归档（`archive/h5-demo/`）并下线。Netlify 站保留，只发 
 - 2026-08-18：Hans 确认摩托钻缝、跑车挂虚线会撞。Gate 3 关闭。预览五车解锁已关。进入 Gate 4。
 - 2026-08-18：Hans 交 AppID `wxcce206285c95068b`；流量主开不了。第一版无广告、无续命。写入 [ADR 0006](docs/adr/0006-no-ads-first-ship.md)。Gate 4 延后。进入 Gate 5。
 - 2026-08-18：Hans 确认好友榜为历史最高单局分。Gate 5 规则关闭。双号实榜以后再验。进入 Gate 6。
+- 2026-08-18：屏幕定为发车进门（中开车、右下选车/说明），结算两 tab，无续命。选车出口未锁。见 [ADR 0007](docs/adr/0007-screen-map.md)。
+- 2026-08-18：Hans 确认选车只换车、回发车；只有发车页「开车」开局。
+- 2026-08-18：Hans 确认发车页露出当前车。屏幕关系收口。
+- 2026-08-18：开车 HUD 定为顶栏心杠/总分/时速/技能条；技巧分跳字并做小丑牌式燃烧震动。路程不烧。
+- 2026-08-18：选车改为左右翻页（侧视+性能+说明）。HUD 左命格下叠技能条，中总分，右时速下累计计时。命格=杠+心。
+- 2026-08-18：界面结构确认。选车文案按宝开语写入 [docs/ui-copy.md](docs/ui-copy.md)。
+- 2026-08-18：选车图鉴换成正式稿：逮虾户 / 钢板 / 无头骑士 / 云玩家 / DIO。无头骑士速度按机制改为快于跑车、慢于飞车。
+- 2026-08-18：落下 `.grok/skills/popcap-almanac/`。图鉴系统标为以后做；第一版只在选车页用车图鉴。
+- 2026-08-18：Hans 确认保险杠+重量级一起用。见 [ADR 0008](docs/adr/0008-weight-and-bumper.md)。压路机时停技能未锁。
+- 2026-08-18：Hans 确认压路机满条双击、时停清屏。见 [ADR 0009](docs/adr/0009-roller-timestop.md)。代码未改。
+- 2026-08-18：来车定为 24 种（重量/速度/占道/行为/权重）。见 [docs/traffic-roster.md](docs/traffic-roster.md)。第一版建议先做 10 种。
+- 2026-08-18：Hans 确认第一版 10 种来车；结算失败提示随撞上的车变化。文案写入 [docs/ui-copy.md](docs/ui-copy.md)。
+- 2026-08-18：结算一行提示定稿（完赛平安夜、警车请喝茶，其余 9 句最终稿）。
+- 2026-08-18：已锁规则做进 midnightroad 色块。Creator 自测：发车/选车/说明/开车/肇事结算/好友榜 tab/回发车。core 27 测通过。未点头前不出图。
+- 2026-08-18：删掉空的 `assets/scene.scene`。正式入口只留 `scenes/Main.scene`。
+- 2026-08-18：Hans 明确施工/路障与路形变化（大桥、隧道、土路）分开，同一段不叠。写入 [ADR 0010](docs/adr/0010-exclusive-road-kinds.md)。midnightroad 工厂、碰撞和色块绘制已按此拆开。
+- 2026-08-18 收工：玩法先停。落下 [docs/color-block-now.md](docs/color-block-now.md)（代码结构、已锁需求、文案、屏幕文字图示）。下一会话 Codex 审查界面。未提交。

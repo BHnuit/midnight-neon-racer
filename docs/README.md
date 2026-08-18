@@ -18,5 +18,7 @@
 | [wechat-beian-copy.md](wechat-beian-copy.md) | 备案文案（未提交） |
 | [art-bible.md](art-bible.md)、[art/README.md](art/README.md) | 美术契约与分册索引（出图暂停） |
 | [art-bible-revision-01.md](art-bible-revision-01.md) | 机位修法 A |
+| [ui-copy.md](ui-copy.md) | 选车图鉴与结算一行 |
+| [color-block-now.md](color-block-now.md) | 色块框架现状：代码结构、已锁需求、文案、屏幕文字图示。界面审查入口 |
 
-完整方案 [plan.md](plan.md) 已于 2026-08-18 由 Hans 接受。当前执行 S0，通过后再做正式第二刀。
+完整方案 [plan.md](plan.md) 已于 2026-08-18 由 Hans 接受。S1–S5 规则已进 midnightroad；当前色块预览，出图仍暂停。
