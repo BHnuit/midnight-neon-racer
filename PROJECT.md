@@ -3,15 +3,15 @@
 **Type**: 微信小游戏（个人 IAA）
 **Status**: in_progress
 **Created / Last Updated**: 2026-08-18
-**协作等级 / 角色**: L2 执行者（Gate 2–3 已过；Gate 4 广告延后；下一项 Gate 5）
+**协作等级 / 角色**: L2 执行者（Gate 2–3、5 规则已过；Gate 4 广告延后；下一项 Gate 6）
 **Alignment**: aligned
 **Feishu**: 未发布
 
 ## Startup Summary
 
-**Project Snapshot**: Gate 2–3 已过。AppID `wxcce206285c95068b` 已收到。流量主开不了，第一版无广告、无续命（ADR 0006）。画面仍是色块。Gate 5–6 与 `run_game` 未过。
+**Project Snapshot**: Gate 2–3 已过。第一版无广告。好友榜规则已锁为历史最高单局分。双号实榜以后再验。画面仍是色块。Gate 6 与 `run_game` 未过。
 
-**Next Step**: **Gate 5：好友榜**。默认历史最高单局分；两个微信号对顺序。未确认前不上传。
+**Next Step**: **Gate 6：出图**。是否解除暂停、用哪套图。未确认前不出正式局内图、不上传。
 
 ## Objective
 
@@ -46,7 +46,7 @@ H5 Demo 已归档（`archive/h5-demo/`）并下线。Netlify 站保留，只发 
 ## Acceptance Review
 
 - Mode: sequential
-- Current Item: Gate-5
+- Current Item: Gate-6
 - Batch Authorization: 2026-08-18 授权先独立做完 S1–S5；2026-08-18 收工时 Hans 指定醒来后逐项确认下列 6 项
 - Items:
   - Gate-1-plan: accepted
@@ -61,9 +61,9 @@ H5 Demo 已归档（`archive/h5-demo/`）并下线。Netlify 站保留，只发 
   - Gate-4 广告: deferred
     - Evidence: AppID `wxcce206285c95068b`；流量主未开（UV 不足 500）；第一版无广告见 [ADR 0006](docs/adr/0006-no-ads-first-ship.md)
     - Hans Confirmation: 2026-08-18「第一版可以先做无广告版本」
-  - Gate-5 好友榜: pending
-    - Evidence: 默认 `best_score_v1` 历史最高；openDataContext 源码已就位；无双号实榜
-    - Hans Confirmation: none — 确认「历史最高」并两号对顺序
+  - Gate-5 好友榜: accepted
+    - Evidence: 上报 `best_score_v1` 历史最高；低分不覆盖。双号实榜仍待以后
+    - Hans Confirmation: 2026-08-18「确认」历史最高
   - Gate-6 出图: pending
     - Evidence: 出图仍暂停；预览色块是预期
     - Hans Confirmation: none — 是否解除暂停、用哪套图
@@ -91,7 +91,7 @@ H5 Demo 已归档（`archive/h5-demo/`）并下线。Netlify 站保留，只发 
 - 工具策略已收敛：保留微信小游戏助手做包级验证，`game-architect` 只在 §5.6 架构节点调用；不为常规编码启用大型游戏工作室流程
 - S1–S5 代码已提交（Cocos `1931557`）；`MvpLoop` 已删，画面仍是色块
 - Hans 已试玩并否定离散换道；`run_game` 仍 BLOCKED
-- 下一步：Gate 5 好友榜历史最高 + 双号对顺序
+- 下一步：Gate 6 是否解除出图暂停
 
 ## Execution Log
 
@@ -169,3 +169,4 @@ H5 Demo 已归档（`archive/h5-demo/`）并下线。Netlify 站保留，只发 
 - 2026-08-18：Hans 确认 Gate 2「可以 手感对了」。预览改回完整一局。进入 Gate 3。
 - 2026-08-18：Hans 确认摩托钻缝、跑车挂虚线会撞。Gate 3 关闭。预览五车解锁已关。进入 Gate 4。
 - 2026-08-18：Hans 交 AppID `wxcce206285c95068b`；流量主开不了。第一版无广告、无续命。写入 [ADR 0006](docs/adr/0006-no-ads-first-ship.md)。Gate 4 延后。进入 Gate 5。
+- 2026-08-18：Hans 确认好友榜为历史最高单局分。Gate 5 规则关闭。双号实榜以后再验。进入 Gate 6。
