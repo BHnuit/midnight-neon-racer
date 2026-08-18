@@ -3,15 +3,15 @@
 **Type**: 微信小游戏（个人 IAA）
 **Status**: in_progress
 **Created / Last Updated**: 2026-08-18
-**协作等级 / 角色**: L2 执行者（Gate 2 试玩后改操作契约；擦车未锁，未改代码）
+**协作等级 / 角色**: L2 执行者（Gate 2 已过；下一项 Gate 3 五车定位）
 **Alignment**: aligned
 **Feishu**: 未发布
 
 ## Startup Summary
 
-**Project Snapshot**: Gate 2 操作已改进 Cocos（跟手横移、双击加速、晚躲擦车、连击阶梯）。预览走短段。core 17 测通过。等 Hans 再摸一局。画面仍是色块。包级 `run_game`、真机广告、双号验榜、出图均未过。
+**Project Snapshot**: Hans 确认 Gate 2 手感对了。跟手横移、双击加速、晚躲擦车、连击阶梯已锁定。预览改回完整一局。画面仍是色块。Gate 3–6 与 `run_game` 未过。
 
-**Next Step**: **Hans 在 Creator 预览摸短段**，确认跟手横移 / 双击加速 / 晚躲擦车 / 连击。未确认前不推进 S6、不上传。
+**Next Step**: **Gate 3：五车定位**。摸跑车以外的车，确认调参有没有拧歪（货车硬、摩托窄、飞/碾）。未确认前不推进 S6、不上传。
 
 ## Objective
 
@@ -23,7 +23,7 @@
 
 做：个人 IAA、动作/跑酷、12+、种子大图约 5 分钟、三车道跟手横移、双击加速、晚躲擦车、擦车连击、五车+里程、分值 A、一次广告续命、结算好友榜、Cocos 导出微信包。
 
-不做（第一版）：内购、全球榜、幻影陪跑、连击、手写正式包 `game.js`、把 Demo 当提审包、局内精细出图（暂停）。
+不做（第一版）：内购、全球榜、幻影陪跑、手写正式包 `game.js`、把 Demo 当提审包、局内精细出图（暂停）。
 
 H5 Demo 已归档（`archive/h5-demo/`）并下线。Netlify 站保留，只发 `archive/offline/`。以后有新 Demo 再开。
 
@@ -46,15 +46,15 @@ H5 Demo 已归档（`archive/h5-demo/`）并下线。Netlify 站保留，只发 
 ## Acceptance Review
 
 - Mode: sequential
-- Current Item: Gate-2
+- Current Item: Gate-3
 - Batch Authorization: 2026-08-18 授权先独立做完 S1–S5；2026-08-18 收工时 Hans 指定醒来后逐项确认下列 6 项
 - Items:
   - Gate-1-plan: accepted
     - Evidence: [docs/plan.md](docs/plan.md)
     - Hans Confirmation: 2026-08-18「接受，授权开工」
-  - Gate-2 手感: pending
-    - Evidence: 契约 ADR 0003–0005；Cocos 已改，core 17 测过；等再摸短段
-    - Hans Confirmation: partial — 操作/擦车/连击已锁（ADR 0003–0005）；改代码后需再试玩才关 Gate 2
+  - Gate-2 手感: accepted
+    - Evidence: 契约 ADR 0003–0005；Cocos 已改；Hans 短段试玩
+    - Hans Confirmation: 2026-08-18「可以 手感对了」
   - Gate-3 五车定位: pending
     - Evidence: `CARS` 在 `midnightroad/assets/scripts/core/GameBalance.ts`；行为测试覆盖飞/碾
     - Hans Confirmation: none — 调参有没有拧歪定位
@@ -91,7 +91,7 @@ H5 Demo 已归档（`archive/h5-demo/`）并下线。Netlify 站保留，只发 
 - 工具策略已收敛：保留微信小游戏助手做包级验证，`game-architect` 只在 §5.6 架构节点调用；不为常规编码启用大型游戏工作室流程
 - S1–S5 代码已提交（Cocos `1931557`）；`MvpLoop` 已删，画面仍是色块
 - Hans 已试玩并否定离散换道；`run_game` 仍 BLOCKED
-- 下一步：Hans 摸短段确认新手感
+- 下一步：Gate 3 五车定位
 
 ## Execution Log
 
@@ -166,3 +166,4 @@ H5 Demo 已归档（`archive/h5-demo/`）并下线。Netlify 站保留，只发 
 - 2026-08-18：Hans 确认连击进第一版，只吃擦车。写入 [ADR 0005](docs/adr/0005-graze-combo.md)。加成算法未锁。未改 Cocos。
 - 2026-08-18：连击定为阶梯 200/300/400、第 4 下起单笔封顶 +500。未改 Cocos。等点头开工。
 - 2026-08-18：Cocos 已改跟手横移、双击加速、晚躲擦车、连击。预览改短段。`npm test` 17 过。等 Hans 再摸。
+- 2026-08-18：Hans 确认 Gate 2「可以 手感对了」。预览改回完整一局。进入 Gate 3。
