@@ -11,7 +11,7 @@
 
 **Project Snapshot**: Hans 确认 Gate 2 手感对了。跟手横移、双击加速、晚躲擦车、连击阶梯已锁定。预览改回完整一局。画面仍是色块。Gate 3–6 与 `run_game` 未过。
 
-**Next Step**: **Gate 3：五车定位**。摸跑车以外的车，确认调参有没有拧歪（货车硬、摩托窄、飞/碾）。未确认前不推进 S6、不上传。
+**Next Step**: **Gate 3：Hans 摸五车定位**。Creator 预览已临时解开五车（`UNLOCK_ALL_CARS`，不进微信包）。确认后关掉开关。
 
 ## Objective
 
