@@ -3,15 +3,15 @@
 **Type**: 微信小游戏（个人 IAA）
 **Status**: in_progress
 **Created / Last Updated**: 2026-08-18
-**协作等级 / 角色**: L2 执行者（Gate 2 已过；下一项 Gate 3 五车定位）
+**协作等级 / 角色**: L2 执行者（Gate 2–3 已过；下一项 Gate 4 广告）
 **Alignment**: aligned
 **Feishu**: 未发布
 
 ## Startup Summary
 
-**Project Snapshot**: Hans 确认 Gate 2 手感对了。跟手横移、双击加速、晚躲擦车、连击阶梯已锁定。预览改回完整一局。画面仍是色块。Gate 3–6 与 `run_game` 未过。
+**Project Snapshot**: Gate 2–3 已过。手感与五车定位（飞/碾/摩托钻缝、其他车挂虚线会撞）Hans 已确认。预览五车解锁已关。画面仍是色块。Gate 4–6 与 `run_game` 未过。
 
-**Next Step**: **Gate 3：Hans 摸五车定位**。Creator 预览已临时解开五车（`UNLOCK_ALL_CARS`，不进微信包）。确认后关掉开关。
+**Next Step**: **Gate 4：正式 AppID + 激励广告位**，真机看一次广告。未给号前不宣称 IAA 过线。
 
 ## Objective
 
@@ -46,7 +46,7 @@ H5 Demo 已归档（`archive/h5-demo/`）并下线。Netlify 站保留，只发 
 ## Acceptance Review
 
 - Mode: sequential
-- Current Item: Gate-3
+- Current Item: Gate-4
 - Batch Authorization: 2026-08-18 授权先独立做完 S1–S5；2026-08-18 收工时 Hans 指定醒来后逐项确认下列 6 项
 - Items:
   - Gate-1-plan: accepted
@@ -55,9 +55,9 @@ H5 Demo 已归档（`archive/h5-demo/`）并下线。Netlify 站保留，只发 
   - Gate-2 手感: accepted
     - Evidence: 契约 ADR 0003–0005；Cocos 已改；Hans 短段试玩
     - Hans Confirmation: 2026-08-18「可以 手感对了」
-  - Gate-3 五车定位: pending
-    - Evidence: `CARS` 在 `midnightroad/assets/scripts/core/GameBalance.ts`；行为测试覆盖飞/碾
-    - Hans Confirmation: none — 调参有没有拧歪定位
+  - Gate-3 五车定位: accepted
+    - Evidence: 飞/碾手势正常；摩托能挂虚线穿缝，跑车挂虚线会撞。色块上看不出宽窄外形，属预期
+    - Hans Confirmation: 2026-08-18「可以 这两条对了」
   - Gate-4 广告: pending
     - Evidence: Dev 四路代码有；无正式 AppID/广告位、无真机观看
     - Hans Confirmation: none — 提供 AppID + 激励广告位并真机看一次
@@ -91,7 +91,7 @@ H5 Demo 已归档（`archive/h5-demo/`）并下线。Netlify 站保留，只发 
 - 工具策略已收敛：保留微信小游戏助手做包级验证，`game-architect` 只在 §5.6 架构节点调用；不为常规编码启用大型游戏工作室流程
 - S1–S5 代码已提交（Cocos `1931557`）；`MvpLoop` 已删，画面仍是色块
 - Hans 已试玩并否定离散换道；`run_game` 仍 BLOCKED
-- 下一步：Gate 3 五车定位
+- 下一步：Gate 4 正式 AppID + 激励广告位
 
 ## Execution Log
 
@@ -167,3 +167,4 @@ H5 Demo 已归档（`archive/h5-demo/`）并下线。Netlify 站保留，只发 
 - 2026-08-18：连击定为阶梯 200/300/400、第 4 下起单笔封顶 +500。未改 Cocos。等点头开工。
 - 2026-08-18：Cocos 已改跟手横移、双击加速、晚躲擦车、连击。预览改短段。`npm test` 17 过。等 Hans 再摸。
 - 2026-08-18：Hans 确认 Gate 2「可以 手感对了」。预览改回完整一局。进入 Gate 3。
+- 2026-08-18：Hans 确认摩托钻缝、跑车挂虚线会撞。Gate 3 关闭。预览五车解锁已关。进入 Gate 4。
