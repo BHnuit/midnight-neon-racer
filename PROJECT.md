@@ -1,17 +1,17 @@
 # 真夜中道路
 
 **Type**: 微信小游戏（个人 IAA）
-**Status**: waiting
+**Status**: in_progress
 **Created / Last Updated**: 2026-08-18
-**协作等级 / 角色**: L2 执行者（S1–S5 代码已落地；等 Hans 逐项确认）
+**协作等级 / 角色**: L2 执行者（Gate 2 试玩后改操作契约；擦车未锁，未改代码）
 **Alignment**: aligned
 **Feishu**: 未发布
 
 ## Startup Summary
 
-**Project Snapshot**: S1–S5 规则与场景接线已提交。Cocos `BHnuit/s1-formal-second-slice` @ `1931557` 已删 `MvpLoop`、改挂 `MainController`。画面仍是色块（S6 前预期）。Creator **没有**完整试跑，只截过选车屏。core 16 测通过。包级 `run_game`、真机广告、双号验榜、出图均未过。
+**Project Snapshot**: Gate 2 操作已改进 Cocos（跟手横移、双击加速、晚躲擦车、连击阶梯）。预览走短段。core 17 测通过。等 Hans 再摸一局。画面仍是色块。包级 `run_game`、真机广告、双号验榜、出图均未过。
 
-**Next Step**: **Hans 醒来后按序确认下面 6 项**，未确认前不推进 S6 出图、不上传。
+**Next Step**: **Hans 在 Creator 预览摸短段**，确认跟手横移 / 双击加速 / 晚躲擦车 / 连击。未确认前不推进 S6、不上传。
 
 ## Objective
 
@@ -21,7 +21,7 @@
 
 第一版产品边界以 `CONTEXT.md` 为准。文件树见 [TREE.md](TREE.md)。
 
-做：个人 IAA、动作/跑酷、12+、种子大图约 5 分钟、三车道滑动换道、同时氮换道、五车+里程、分值 A、一次广告续命、结算好友榜、Cocos 导出微信包。
+做：个人 IAA、动作/跑酷、12+、种子大图约 5 分钟、三车道跟手横移、双击加速、晚躲擦车、擦车连击、五车+里程、分值 A、一次广告续命、结算好友榜、Cocos 导出微信包。
 
 不做（第一版）：内购、全球榜、幻影陪跑、连击、手写正式包 `game.js`、把 Demo 当提审包、局内精细出图（暂停）。
 
@@ -53,8 +53,8 @@ H5 Demo 已归档（`archive/h5-demo/`）并下线。Netlify 站保留，只发 
     - Evidence: [docs/plan.md](docs/plan.md)
     - Hans Confirmation: 2026-08-18「接受，授权开工」
   - Gate-2 手感: pending
-    - Evidence: 规则测试 16 过；Creator **无**完整试跑，仅选车截图 [docs/evidence/s1/creator-select.png](docs/evidence/s1/creator-select.png)
-    - Hans Confirmation: none — 正式短局/长局手感能否进下一阶段
+    - Evidence: 契约 ADR 0003–0005；Cocos 已改，core 17 测过；等再摸短段
+    - Hans Confirmation: partial — 操作/擦车/连击已锁（ADR 0003–0005）；改代码后需再试玩才关 Gate 2
   - Gate-3 五车定位: pending
     - Evidence: `CARS` 在 `midnightroad/assets/scripts/core/GameBalance.ts`；行为测试覆盖飞/碾
     - Hans Confirmation: none — 调参有没有拧歪定位
@@ -86,12 +86,12 @@ H5 Demo 已归档（`archive/h5-demo/`）并下线。Netlify 站保留，只发 
 ## Progress Snapshot
 
 - 需求已对齐；两轮框架验证已过；H5 已归档；Netlify 已下线
-- 完整开发方案已由 Hans 接受（Gate 1）；正式第二刀未开工；美术出图暂停
+- 完整开发方案已由 Hans 接受（Gate 1）；S1–S5 代码已落地；美术出图暂停
 - 双仓目录治理已完成：契约仓主动目录有职责 README；Cocos 工程有根级 AGENTS/README、架构地图和测试目录契约
 - 工具策略已收敛：保留微信小游戏助手做包级验证，`game-architect` 只在 §5.6 架构节点调用；不为常规编码启用大型游戏工作室流程
 - S1–S5 代码已提交（Cocos `1931557`）；`MvpLoop` 已删，画面仍是色块
-- Creator 未做完整试跑；`run_game` 仍 BLOCKED
-- 下一步：Hans 按 Gate 2→6 加 PKG 逐项确认
+- Hans 已试玩并否定离散换道；`run_game` 仍 BLOCKED
+- 下一步：Hans 摸短段确认新手感
 
 ## Execution Log
 
@@ -161,3 +161,8 @@ H5 Demo 已归档（`archive/h5-demo/`）并下线。Netlify 站保留，只发 
 - 2026-08-18：Hans 授权无人值守完成 S1–S5，验收统一留 S6。原话见计划评论。Gate 2–5 延后确认。
 - 2026-08-18：S1–S5 实现落地。`GameDirector`/`RoadFactory`/`PlayerProgress`/Dev+WeChat adapter/开放数据域源码；场景改挂 `MainController` 并删除 `MvpLoop`。16 个 core 测试通过；Creator 选车屏无 error。PKG/真机广告/双号验榜/出图仍待 S6。
 - 2026-08-18 03:17 +0800：本轮收工存档。Hans 确认下一步是醒来后逐项确认 Gate 2–6 与微信助手 `run_game`。已写明：Creator 无完整试跑；预览仍是色块属预期。状态改为 `waiting`。
+- 2026-08-18：Gate 2 试玩。Hans 否定离散换道；锁跟手横移（松手停缝）、双击加速。写入 [ADR 0003](docs/adr/0003-follow-steer.md)。擦车未锁。未改 Cocos。
+- 2026-08-18：擦车定为迎面晚躲，不是贴身路过。写入 [ADR 0004](docs/adr/0004-late-dodge-graze.md)。连击是否进第一版未锁。未改 Cocos。
+- 2026-08-18：Hans 确认连击进第一版，只吃擦车。写入 [ADR 0005](docs/adr/0005-graze-combo.md)。加成算法未锁。未改 Cocos。
+- 2026-08-18：连击定为阶梯 200/300/400、第 4 下起单笔封顶 +500。未改 Cocos。等点头开工。
+- 2026-08-18：Cocos 已改跟手横移、双击加速、晚躲擦车、连击。预览改短段。`npm test` 17 过。等 Hans 再摸。
