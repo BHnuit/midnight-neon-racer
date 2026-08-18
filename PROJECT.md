@@ -3,15 +3,15 @@
 **Type**: 微信小游戏（个人 IAA）
 **Status**: in_progress
 **Created / Last Updated**: 2026-08-18
-**协作等级 / 角色**: L2 执行者（Gate 2–3 已过；下一项 Gate 4 广告）
+**协作等级 / 角色**: L2 执行者（Gate 2–3 已过；Gate 4 广告延后；下一项 Gate 5）
 **Alignment**: aligned
 **Feishu**: 未发布
 
 ## Startup Summary
 
-**Project Snapshot**: Gate 2–3 已过。手感与五车定位（飞/碾/摩托钻缝、其他车挂虚线会撞）Hans 已确认。预览五车解锁已关。画面仍是色块。Gate 4–6 与 `run_game` 未过。
+**Project Snapshot**: Gate 2–3 已过。AppID `wxcce206285c95068b` 已收到。流量主开不了，第一版无广告、无续命（ADR 0006）。画面仍是色块。Gate 5–6 与 `run_game` 未过。
 
-**Next Step**: **Gate 4：正式 AppID + 激励广告位**，真机看一次广告。未给号前不宣称 IAA 过线。
+**Next Step**: **Gate 5：好友榜**。默认历史最高单局分；两个微信号对顺序。未确认前不上传。
 
 ## Objective
 
@@ -21,7 +21,7 @@
 
 第一版产品边界以 `CONTEXT.md` 为准。文件树见 [TREE.md](TREE.md)。
 
-做：个人 IAA、动作/跑酷、12+、种子大图约 5 分钟、三车道跟手横移、双击加速、晚躲擦车、擦车连击、五车+里程、分值 A、一次广告续命、结算好友榜、Cocos 导出微信包。
+做：个人主体（声明不开虚拟支付）、动作/跑酷、12+、种子大图约 5 分钟、三车道跟手横移、双击加速、晚躲擦车、擦车连击、五车+里程、分值 A、结算好友榜、Cocos 导出微信包。第一版无广告续命。
 
 不做（第一版）：内购、全球榜、幻影陪跑、手写正式包 `game.js`、把 Demo 当提审包、局内精细出图（暂停）。
 
@@ -38,7 +38,7 @@ H5 Demo 已归档（`archive/h5-demo/`）并下线。Netlify 站保留，只发 
 
 - AC-play：能选车、开种子大图、当场看到四项分、可本地结算
 - AC-cars：五车定位与里程节奏符合契约
-- AC-iaa：一次激励续命；结算好友榜；无内购
+- AC-iaa：第一版无广告；结算好友榜；无内购。激励续命等流量主开通（Gate 4 延后）
 - AC-ship：Cocos 微信包在开发者工具/真机可玩，名称与备案稿一致
 
 正式第二刀范围仍是「选车 + 一段三车道 + 本地结算」，按方案 S1 实施；广告和好友榜不进入这一刀。
@@ -46,7 +46,7 @@ H5 Demo 已归档（`archive/h5-demo/`）并下线。Netlify 站保留，只发 
 ## Acceptance Review
 
 - Mode: sequential
-- Current Item: Gate-4
+- Current Item: Gate-5
 - Batch Authorization: 2026-08-18 授权先独立做完 S1–S5；2026-08-18 收工时 Hans 指定醒来后逐项确认下列 6 项
 - Items:
   - Gate-1-plan: accepted
@@ -58,9 +58,9 @@ H5 Demo 已归档（`archive/h5-demo/`）并下线。Netlify 站保留，只发 
   - Gate-3 五车定位: accepted
     - Evidence: 飞/碾手势正常；摩托能挂虚线穿缝，跑车挂虚线会撞。色块上看不出宽窄外形，属预期
     - Hans Confirmation: 2026-08-18「可以 这两条对了」
-  - Gate-4 广告: pending
-    - Evidence: Dev 四路代码有；无正式 AppID/广告位、无真机观看
-    - Hans Confirmation: none — 提供 AppID + 激励广告位并真机看一次
+  - Gate-4 广告: deferred
+    - Evidence: AppID `wxcce206285c95068b`；流量主未开（UV 不足 500）；第一版无广告见 [ADR 0006](docs/adr/0006-no-ads-first-ship.md)
+    - Hans Confirmation: 2026-08-18「第一版可以先做无广告版本」
   - Gate-5 好友榜: pending
     - Evidence: 默认 `best_score_v1` 历史最高；openDataContext 源码已就位；无双号实榜
     - Hans Confirmation: none — 确认「历史最高」并两号对顺序
@@ -91,7 +91,7 @@ H5 Demo 已归档（`archive/h5-demo/`）并下线。Netlify 站保留，只发 
 - 工具策略已收敛：保留微信小游戏助手做包级验证，`game-architect` 只在 §5.6 架构节点调用；不为常规编码启用大型游戏工作室流程
 - S1–S5 代码已提交（Cocos `1931557`）；`MvpLoop` 已删，画面仍是色块
 - Hans 已试玩并否定离散换道；`run_game` 仍 BLOCKED
-- 下一步：Gate 4 正式 AppID + 激励广告位
+- 下一步：Gate 5 好友榜历史最高 + 双号对顺序
 
 ## Execution Log
 
@@ -168,3 +168,4 @@ H5 Demo 已归档（`archive/h5-demo/`）并下线。Netlify 站保留，只发 
 - 2026-08-18：Cocos 已改跟手横移、双击加速、晚躲擦车、连击。预览改短段。`npm test` 17 过。等 Hans 再摸。
 - 2026-08-18：Hans 确认 Gate 2「可以 手感对了」。预览改回完整一局。进入 Gate 3。
 - 2026-08-18：Hans 确认摩托钻缝、跑车挂虚线会撞。Gate 3 关闭。预览五车解锁已关。进入 Gate 4。
+- 2026-08-18：Hans 交 AppID `wxcce206285c95068b`；流量主开不了。第一版无广告、无续命。写入 [ADR 0006](docs/adr/0006-no-ads-first-ship.md)。Gate 4 延后。进入 Gate 5。

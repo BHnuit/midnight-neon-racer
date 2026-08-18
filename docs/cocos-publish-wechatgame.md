@@ -63,7 +63,7 @@ https://docs.cocos.com/creator/3.8/manual/zh/editor/publish/publish-wechatgame.h
 | 面板项 | 作用 |
 | --- | --- |
 | 设备方向 | Portrait / Landscape，写入 `game.json`。本项目用 **Portrait** |
-| AppID | **必填**。面板默认 `wx6ac3f5090a6b99c5` 只用于测试。写入 `project.config.json`。真夜中道路用自己的号；没有就测试号，不能上传、不能验广告 |
+| AppID | **必填**。真夜中道路正式号 `wxcce206285c95068b`。面板默认 `wx6ac3f5090a6b99c5` 只用于测试。写入 `project.config.json` |
 | 生成开放数据域工程模板 | 好友榜以后再开，见官方「开放数据域」 |
 | 分离引擎 | 是否用微信小游戏引擎插件 |
 | 高性能模式 | 微信高性能模式 |
