@@ -1,5 +1,7 @@
 # 第二轮验证 · 最小循环（不是正式开工）
 
+> 历史过线记录。`MvpLoop` 已删，正式入口是 `MainController`。日常巡环看 [framework-loop.md](framework-loop.md)。
+
 2026-08-17。Hans 授权：用 MCP 跑通最小 MVP，证明「选车 → 一段三车道 → 本地结算」在 Cocos 里能转。**不是**第二刀正式方案，不出图、不接广告/好友榜。
 
 ## 过线

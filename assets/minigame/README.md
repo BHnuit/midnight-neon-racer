@@ -10,4 +10,4 @@
 | `previews/` | 构图/透视验证图和辅助脚本 |
 | `refs/` | 风格与构图参考，不进包 |
 
-总规范读 `../../docs/art-bible.md`、`../../docs/art-bible-revision-01.md` 和 `../../docs/art/`。当前局内正式出图暂停；恢复前不得把预览图当成已批准资产导入 Cocos。
+总规范读 `../../docs/art-bible.md`、`../../docs/art-bible-revision-01.md` 和 `../../docs/art/`。Gate 6 已解除，仍不得把预览图或签名稿当成已批准资产导入 Cocos。

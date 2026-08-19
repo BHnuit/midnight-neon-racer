@@ -15,10 +15,12 @@ creation/
 │   │   ├── README.md             # 文档索引
 │   │   ├── plan.md               # S0-S7 完整开发方案
 │   │   ├── new-session.md        # 新会话恢复入口
+│   │   ├── framework-loop.md     # 改代码 / Creator / 微信预览巡环
 │   │   ├── adr/README.md         # 稳定决策与编号规则
-│   │   ├── art/README.md         # 美术分册索引；出图暂停
+│   │   ├── art/README.md         # 美术分册索引；Gate 6 已解除
 │   │   ├── ui-copy.md            # 选车图鉴与结算一行
 │   │   ├── color-block-now.md    # 色块现状与屏幕图示；界面审查入口
+│   │   ├── ui-art-production-spec.md # 出图前界面、素材与车流决策规格
 │   │   └── evidence/README.md    # 验证证据契约
 │   ├── assets/
 │   │   ├── README.md             # 素材进入/排除边界
@@ -49,7 +51,7 @@ creation/
     │       └── platform/         # Dev / WeChat adapters
     ├── tests/
     │   ├── README.md
-    │   └── core/                 # vitest 37 测；不进 Creator
+    │   └── core/                 # vitest 49 测；不进 Creator
     ├── build-templates/
     │   ├── README.md             # 模板审计规则
     │   └── wechatgame/           # 微信模板，不塞说明文件
@@ -73,7 +75,7 @@ creation/
 
 ## 正式目标结构
 
-Hans 接受 [完整开发方案](docs/plan.md) 后，实施 Agent 按切片通过 Creator/Cocos MCP 建立运行时目录：
+Hans 已接受 [完整开发方案](docs/plan.md)。色块原型与微信包启动证据已齐；Gate 6 已解除，A0 工单留到下一会话。改玩法按 [docs/framework-loop.md](docs/framework-loop.md)。实施 Agent 按切片通过 Creator/Cocos MCP 建立运行时目录：
 
 ```text
 midnightroad/
@@ -92,7 +94,7 @@ midnightroad/
     └── openDataContext/          # S5 才创建的好友榜开放数据域
 ```
 
-治理框架已建立。玩法色块已进 midnightroad（基线 `de97611` 上还有未提交改动），37 个 core 测试。界面审查看 [docs/color-block-now.md](docs/color-block-now.md)。微信助手空包验证仍 BLOCKED。不要提前创建无消费者的 manager 或序列化资产。
+治理框架已建立。玩法色块已进 midnightroad，49 个 core 测试。界面审查结论和出图前规格见 [docs/ui-art-production-spec.md](docs/ui-art-production-spec.md)。改玩法与验包按 [docs/framework-loop.md](docs/framework-loop.md)。微信助手 `run_game` 发车/开车预览已过。不要提前创建无消费者的 manager 或序列化资产。根目录 `参考/` 不入库。
 
 ## 本仓库根上放什么
 
@@ -102,4 +104,4 @@ midnightroad/
 
 ## 后续从哪里开始
 
-Hans 已于 2026-08-18 接受 [docs/plan.md](docs/plan.md)。玩法色块先停；下一会话按 [docs/color-block-now.md](docs/color-block-now.md) 审界面。结论写回 `PROJECT.md` / `docs/adr/`。
+Hans 已于 2026-08-18 接受 [docs/plan.md](docs/plan.md)。玩法色块与微信包启动已齐；Gate 6 已于 2026-08-19 解除。A0 工单留到下一会话。改玩法先读 [docs/framework-loop.md](docs/framework-loop.md)。

@@ -17,6 +17,7 @@ OUT_SUN = HERE / "prop-sun-dusk.png"
 OUT_PLAY = ROOT / "assets/minigame/previews/play-dusk-approach.jpg"
 
 W, H = 720, 1280
+# Historical A preview baseline. Runtime and new production assets use A-2 (VY=700).
 VY = 797
 # 城楼大约从 y=560 冒头；天空铺到这里即可
 SKY_END = 720

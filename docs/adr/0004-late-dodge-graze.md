@@ -2,6 +2,7 @@
 
 **Status**: accepted
 **Date**: 2026-08-18
+**Partially superseded by**: [ADR 0011](0011-mixed-flow-graze.md)；本文继续定义迎面车的晚躲擦车，同向贴近超车不再被排除
 
 ## Context
 

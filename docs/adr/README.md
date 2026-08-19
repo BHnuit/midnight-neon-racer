@@ -14,5 +14,7 @@
 | [0008-weight-and-bumper.md](0008-weight-and-bumper.md) | 保险杠和重量级一起用 |
 | [0009-roller-timestop.md](0009-roller-timestop.md) | 压路机满条双击、时停清屏 |
 | [0010-exclusive-road-kinds.md](0010-exclusive-road-kinds.md) | 施工路障和路形变化互斥 |
+| [0011-mixed-flow-graze.md](0011-mixed-flow-graze.md) | 同向贴近超车与迎面晚躲统一为擦车并共用连击 |
+| [0012-bottom-hud-cluster.md](0012-bottom-hud-cluster.md) | 顶栏状态 + 底部时速环，避开微信胶囊 |
 
 新 ADR 使用递增四位编号，写清 Context、Decision、Consequences 和 Status。普通进度写 `PROJECT.md`，实现细节写代码/工程文档，不为可逆的小改动滥建 ADR。

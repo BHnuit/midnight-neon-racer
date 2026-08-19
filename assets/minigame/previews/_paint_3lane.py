@@ -21,7 +21,7 @@ OUT_NITRO = ROOT / "assets/minigame/previews/play-night-3lane-nitro.jpg"
 OUT_DEBUG = Path("/tmp/lane-debug.png")
 
 W, H = 720, 1280
-# 修订 01 · A：对齐底板自带地面，不要再另开一套消失点。
+# 历史修订 01 · A 预览；当前运行时与新素材规格已升级为 A-2。
 VX, VY = 376, 797
 
 # Driving surface sized so the locked car sits in the center lane.

@@ -1,0 +1,89 @@
+{
+  "id": "asset/semantic-id",
+  "version": "v01",
+  "status": "draft",
+  "category": null,
+  "authority": {
+    "asset_or_screen_spec": null,
+    "approved_family_anchor": null,
+    "art_bible": null,
+    "runtime_contract": null
+  },
+  "source": {
+    "construction_master": null,
+    "style_anchor": null,
+    "references": [],
+    "generator": {
+      "provider": null,
+      "model_or_version": null,
+      "workflow_or_config": null,
+      "prompt_template_version": null,
+      "prompt_language": null,
+      "control_type": null,
+      "control_weight": null,
+      "parameter_authority": null,
+      "cross_model_parameter_mapping": null,
+      "seed_or_reproducibility_note": null,
+      "generated_at": null
+    }
+  },
+  "construction": {
+    "view": null,
+    "source_size": { "width": null, "height": null },
+    "container_frame": { "width": null, "height": null },
+    "subject_safe_bounds": { "width": null, "height": null },
+    "subject_bounds": { "x": null, "y": null, "width": null, "height": null },
+    "anchor": { "type": null, "x": null, "y": null },
+    "camera_or_projection": null,
+    "must_preserve": [],
+    "must_not_bake": []
+  },
+  "style": {
+    "asset_class": null,
+    "containing_surface": null,
+    "style_profile_id": null,
+    "style_profile_version": null,
+    "calibration_comparison_board": null,
+    "palette_id": null,
+    "palette_authority": null,
+    "pixel_grid": {
+      "base_px": null,
+      "logical_size": { "width": null, "height": null },
+      "scale_path": null
+    },
+    "edge_rule": null,
+    "color_or_detail_budget": null,
+    "dither_rule": null
+  },
+  "runtime": {
+    "file": null,
+    "runtime_size": { "width": null, "height": null },
+    "format": null,
+    "alpha": null,
+    "transparent_padding_px": { "left": null, "top": null, "right": null, "bottom": null },
+    "pivot": { "x": null, "y": null, "meaning": null },
+    "atlas_group": null,
+    "composite_pass": null,
+    "target_screen_or_segment": null,
+    "minimum_readable_size_px": { "width": null, "height": null },
+    "import_settings": {
+      "filtering": null,
+      "mipmaps": null,
+      "compression": null
+    }
+  },
+  "validation": {
+    "checks": [
+      { "gate": "G0", "status": "pending", "evidence": null },
+      { "gate": "G1", "status": "pending", "evidence": null },
+      { "gate": "G1.5", "status": "pending", "evidence": null },
+      { "gate": "G2", "status": "pending", "evidence": null },
+      { "gate": "G3", "status": "pending", "evidence": null },
+      { "gate": "G4", "status": "pending", "evidence": null },
+      { "gate": "G5", "status": "pending", "evidence": null },
+      { "gate": "G6", "status": "pending", "evidence": null }
+    ],
+    "validator_command": null,
+    "notes": "Keep null values unresolved until an authority source defines them. Do not mark approved until visual and runtime checks pass."
+  }
+}

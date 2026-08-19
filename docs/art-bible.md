@@ -13,7 +13,7 @@
 | [art/roadside-approach.md](art/roadside-approach.md) | 楼贴路边 + 纵向街墙/卡片推近 |
 | [art/car-grounding.md](art/car-grounding.md) | 车不贴纸：格、压印、落光、残影 |
 | [art/sky-catalog.md](art/sky-catalog.md) | 空天件：月、落日、灯牌、烟花… |
-| [art-bible-revision-01.md](art-bible-revision-01.md) | 主镜头透视数值；与本文冲突时以它为准。**修法 A 已锁** |
+| [art-bible-revision-01.md](art-bible-revision-01.md) | 首次主镜头对齐与历史数值；其顶部 A-2 试玩修订为当前规格。**A-2 已锁** |
 
 色卡资产在 `assets/minigame/palette/`。图层目录在 `assets/minigame/layers/`。
 

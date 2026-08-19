@@ -1,17 +1,17 @@
 # 真夜中道路
 
 **Type**: 微信小游戏（个人 IAA）
-**Status**: waiting
-**Created / Last Updated**: 2026-08-18
-**协作等级 / 角色**: L2 执行者（Gate 2–3、5 规则已过；Gate 4 广告延后；玩法色块先停，下一项界面审查）
+**Status**: active
+**Created / Last Updated**: 2026-08-19
+**协作等级 / 角色**: L2 执行者（Gate 2–3、5、6 已过；Gate 4 广告延后；出图按 G0→G6 单锚点推进）
 **Alignment**: aligned
 **Feishu**: 未发布
 
 ## Startup Summary
 
-**Project Snapshot**: 玩法色块先停在 midnightroad：机位 A、九层、发车/选车/说明/开车/结算、施工与路形互斥。画面仍是色块。UNLOCK_ALL + slice 开着。界面审查入口 [docs/color-block-now.md](docs/color-block-now.md)。Gate 6 出图暂停。`run_game` 未过。
+**Project Snapshot**: `midnightroad` 已完成可试玩色块原型：完整路线、五屏、路段级混合车流、三种换向外皮、OutRun 式左右弯/上下坡、统一擦车、低文字 TaiT CRT 菜单、顶栏命格/总分与底部时速环均已落地。49 项规则测试通过；跑车满速全程约 300 秒，试玩启动档案抬到最高解锁里程。道路前视距离为 1800、透视深度为 260，机位 A-2 使用 `(376,700)`、`k=1.572`。同向车按逐车速度运动；技能空表在未释放时 20 秒回满；进入危险段前同向车先侧向退场，迎面车从报信阶段才入场，规则层禁止混流。场景主题在段尾 1200 距离内渐变，日月重叠交接，并以连续地表补足远景到屏幕下方。Cocos MCP 已重建局内色块预览。Hans 已解除 Gate 6；正式图按 G0→G6 从 A0 单锚点开始，尚未生成。
 
-**Next Step**: **Codex 按 [docs/color-block-now.md](docs/color-block-now.md) 审查并优化色块界面**（发车/选车/说明/HUD/结算可读性）。不改玩法，不接出图。
+**Next Step**: **下一会话写 A0 发车页 TaiT 风格锚点的 G0 工单**（一张 `720×1280` 预览，只进 `assets/minigame/previews/`，不进微信包）。本轮不写工单、不生成图。改玩法先读 [docs/framework-loop.md](docs/framework-loop.md)。
 
 ## Objective
 
@@ -21,9 +21,9 @@
 
 第一版产品边界以 `CONTEXT.md` 为准。文件树见 [TREE.md](TREE.md)。
 
-做：个人主体（声明不开虚拟支付）、动作/跑酷、12+、种子大图约 5 分钟、三车道跟手横移、双击加速、晚躲擦车、擦车连击、五车+里程、分值 A、结算好友榜、Cocos 导出微信包。第一版无广告续命。
+做：个人主体（声明不开虚拟支付）、动作/跑酷、12+、种子大图约 5 分钟、三车道跟手横移、双击加速、贴近擦车（迎面晚躲 / 同向超车）、擦车连击、五车+里程、分值 A、结算好友榜、Cocos 导出微信包。第一版无广告续命。
 
-不做（第一版）：内购、全球榜、幻影陪跑、手写正式包 `game.js`、把 Demo 当提审包、局内精细出图（暂停）。
+不做（第一版）：内购、全球榜、幻影陪跑、手写正式包 `game.js`、把 Demo 当提审包、跳过 G0/G1.5 批量出图。
 
 H5 Demo 已归档（`archive/h5-demo/`）并下线。Netlify 站保留，只发 `archive/offline/`。以后有新 Demo 再开。
 
@@ -34,7 +34,7 @@ H5 Demo 已归档（`archive/h5-demo/`）并下线。Netlify 站保留，只发 
 - AC-align：Hans 确认复述即第一版；词在 `CONTEXT.md`，决定在 [ADR 0001](docs/adr/0001-first-version-loop.md)
 - AC-pipe：空场景微信包能编（第一刀 A）；Creator 预览里色块循环能选车/开/结算（[slice-b](docs/cocos-slice-b-mvp.md)）；MCP 能操作 `midnightroad`
 
-第一版上架验收（**尚未做**，按 [完整开发方案](docs/plan.md) S1–S7 推进）：
+第一版上架验收（**代码与 Creator 色块验证已覆盖 AC-play/AC-cars；平台与正式视觉仍未完成**，按 [完整开发方案](docs/plan.md) S1–S7 推进）：
 
 - AC-play：能选车、开种子大图、当场看到四项分、可本地结算
 - AC-cars：五车定位与里程节奏符合契约
@@ -46,7 +46,7 @@ H5 Demo 已归档（`archive/h5-demo/`）并下线。Netlify 站保留，只发 
 ## Acceptance Review
 
 - Mode: sequential
-- Current Item: Gate-6
+- Current Item: A0-G0
 - Batch Authorization: 2026-08-18 授权先独立做完 S1–S5；2026-08-18 收工时 Hans 指定醒来后逐项确认下列 6 项
 - Items:
   - Gate-1-plan: accepted
@@ -64,12 +64,12 @@ H5 Demo 已归档（`archive/h5-demo/`）并下线。Netlify 站保留，只发 
   - Gate-5 好友榜: accepted
     - Evidence: 上报 `best_score_v1` 历史最高；低分不覆盖。双号实榜仍待以后
     - Hans Confirmation: 2026-08-18「确认」历史最高
-  - Gate-6 出图: pending
-    - Evidence: 出图仍暂停；预览色块是预期
-    - Hans Confirmation: none — 是否解除暂停、用哪套图
-  - S0-PKG run_game: pending
-    - Evidence: [docs/evidence/S0.md](docs/evidence/S0.md) BLOCKED；用户级 `~/.grok/config.toml` 已写助手项
-    - Hans Confirmation: none — 新会话热加载助手后补空包验证
+  - Gate-6 出图: accepted
+    - Evidence: 按 [ai-game-art-pipeline](.grok/skills/ai-game-art-pipeline/SKILL.md) 串行 G0–G6；第一件是 A0 发车页风格锚点
+    - Hans Confirmation: 2026-08-19「可以，解除出图暂停，应用 ai-game-art-pipeline」
+  - S0-PKG run_game: accepted
+    - Evidence: [docs/evidence/S0.md](docs/evidence/S0.md) `S0-PKG-02`；[S1–S5](docs/evidence/S1-S5.md) `S1-PKG-06`
+    - Hans Confirmation: none — 包能启动已有助手+Orca 证据；不替代开发者工具或真机
 
 ## Tools & Resources
 
@@ -77,21 +77,27 @@ H5 Demo 已归档（`archive/h5-demo/`）并下线。Netlify 站保留，只发 
 - Cocos 工程（不在本 git 根下）：`/Users/hant/工作台/projects/creation/midnightroad/`
 - 微信导出包：`midnightroad/build/wechatgame/`
 - 完整开发方案：[docs/plan.md](docs/plan.md)
+- 改代码 / Creator / 微信预览：[docs/framework-loop.md](docs/framework-loop.md)
+- AI 美术生产：`.grok/skills/ai-game-art-pipeline/`；一手资料与引擎依据见 [AI 美术流水线研究](docs/ai-game-art-pipeline-research.md)。Gate 6 解除后按 G0→G1→G1.5→G2–G6 调用，先单锚点校准再批量
 - 架构顾问：`game-architect`（只按 [§5.6](docs/plan.md#56-架构顾问按需调用) 的节点调用；不负责日常工作流）
 - 包级验证：`@tencent-adm/weixin-minigame-helper`（只接 Creator 导出的 `build/wechatgame/`）
 - 文件树：[TREE.md](TREE.md)；文档索引：[docs/README.md](docs/README.md)
 - Netlify（已下线，站还留着）：site `31c60f42-99a4-4890-a9a3-aa50ff2c7c92`；publish=`archive/offline/`；旧游戏在 `archive/h5-demo/`
-- Cocos MCP 3.x Pro：`midnightroad/extensions/cocos-mcp-server/`（v1.7.9）；`http://127.0.0.1:21569/mcp`。不要往仓库扔 `.mcp.json`
+- Cocos MCP 3.x Pro：`midnightroad/extensions/cocos-mcp-server/`（v1.7.9）；当前 `settings/mcp-server.json` 端口 **21570**（`http://127.0.0.1:21570/mcp`）。不要往仓库扔 `.mcp.json`
 
 ## Progress Snapshot
 
 - 需求已对齐；两轮框架验证已过；H5 已归档；Netlify 已下线
-- 完整开发方案已由 Hans 接受（Gate 1）；S1–S5 代码已落地；美术出图暂停
+- 完整开发方案已由 Hans 接受（Gate 1）；S1–S5 代码已落地；Gate 6 已于 2026-08-19 解除，出图从 A0 单锚点按 G0→G6 推进
 - 双仓目录治理已完成：契约仓主动目录有职责 README；Cocos 工程有根级 AGENTS/README、架构地图和测试目录契约
 - 工具策略已收敛：保留微信小游戏助手做包级验证，`game-architect` 只在 §5.6 架构节点调用；不为常规编码启用大型游戏工作室流程
 - S1–S5 代码已提交（Cocos `1931557`）；已锁规则色块已落地（midnightroad `de97611` 之后还有未提交测试与结算屏）
-- Hans 已试玩并否定离散换道；`run_game` 仍 BLOCKED
-- 下一步：Codex 审查并优化色块界面；玩法先停。再问 Gate 6
+- Hans 已试玩并否定离散换道；助手 `run_game` 已于 2026-08-19 补上，发车页可见
+- U1 主体与 U2 的 720×1280 核心矩阵已完成：混合车流、三次危险段、4–6 波、弯坡与隐藏车灯光提示、统一擦车、五屏固定槽、锁车态、三灯发车、结算揭示与交通节点池已跑通；长屏/异形安全区仍留 Gate 6 前补测
+- Creator 当前 67 节点、最大深度 5，场景引用/层级/布局 0 问题；`npm test` 49 项通过；`build/wechatgame` 于 11:11:14 刷新，约 2.90 MB / 40 文件，`libVersion=""`
+- 项目级 `ai-game-art-pipeline` 已建立，并由三轮独立前向测试驱动修订、最终新上下文复测通过：先锁结构白模，再用同一锚点做模型/提示词/语言/控制参数矩阵，冻结可复现 `style-profile` 后才风格化、像素化和接入 Cocos；未知生产值保持 `TBD`，不从安全框、容器色卡或“低/高”标签反推具体数值
+- 接局内 FX 前仍欠 `RunEvent[]` 与 `FxBack/FxFront`；长屏 SafeArea Hans 已嘱先不管。A0 风格锚点不依赖这两项
+- 下一步：下一会话写 A0 的 G0 工单；本轮已写 [framework-loop.md](docs/framework-loop.md) 并整理文档入口
 
 ## Execution Log
 
@@ -187,3 +193,37 @@ H5 Demo 已归档（`archive/h5-demo/`）并下线。Netlify 站保留，只发 
 - 2026-08-18：删掉空的 `assets/scene.scene`。正式入口只留 `scenes/Main.scene`。
 - 2026-08-18：Hans 明确施工/路障与路形变化（大桥、隧道、土路）分开，同一段不叠。写入 [ADR 0010](docs/adr/0010-exclusive-road-kinds.md)。midnightroad 工厂、碰撞和色块绘制已按此拆开。
 - 2026-08-18 收工：玩法先停。落下 [docs/color-block-now.md](docs/color-block-now.md)（代码结构、已锁需求、文案、屏幕文字图示）。下一会话 Codex 审查界面。未提交。
+- 2026-08-18：使用 `game-architect` 的 UI/反馈/3C 边界与 TaiT CRT 设计语言复审正式工程；Cocos MCP 读取场景、运行时截图和知识库，确认 720×1280、场景结构/引用无错误。落下 [docs/ui-art-production-spec.md](docs/ui-art-production-spec.md)：固定五屏几何、HUD、前后 FX、素材批次和验收矩阵；把全迎面/全同向/路段级混合设为出图前决策门。未改玩法代码或 Creator 资产，Gate 6 仍暂停。
+- 2026-08-18：Hans 选择路段级混合车流；接受可变车道换向门、施工借道、隧道换向三种外皮混用。三者共享“车流减少→视觉预警→道路导流→无车缓冲→首辆报信车→迎面车流”的固定语法。危险段车道组合、时长、频率与同向超车计分继续逐项确认；未改代码。
+- 2026-08-18：Hans 确认危险段三条车道都可能出现迎面车。每个波次按最宽玩家车保证至少一条连续可解通道；双车道大巴、横扑和摆动不得封死最后通道，技能不作为生存前提。下一项确认危险段时长；未改代码。
+- 2026-08-18：Hans 选择每个危险段 20–25 秒有效迎面车流，目标 4–6 波；进入/离开的换向演出不计入这段时长。下一项确认一局出现次数；未改代码。
+- 2026-08-18：Hans 选择一局约 5 分钟出现 3 次危险段，有效迎面车流合计约占 20%–25%。随后提出是否加入 OutRun 式上下坡、左右弯与岔路；核对确认当前契约和实现均未包含这些几何，转为下一项范围决策。未改代码。
+- 2026-08-18：Hans 选择加入 OutRun 式真实 2.5D 左右弯与上下坡，不加岔路。跟手横移保持相对道路中心，不增加方向盘或弯道离心甩车；先做隔离色块投影原型。下一项确认迎面危险段与弯坡的叠加范围；未改正式代码。
+- 2026-08-18：Hans 选择危险段与急弯、坡顶完全混合，并明确“撞了就是命”。允许具体来车被道路遮住且不保证逐车反应时间；仍保留每波至少一条几何通道、固定 seed 固定答案。下一项确认是否给环境弱提示；未改正式代码。
+- 2026-08-18：Hans 选择隐藏来车使用环境弱提示：至少有头灯染光、坡顶闪光或护栏反光之一，可加短促喇叭；不显示 HUD 警告，也不保证足够反应。下一项确认同向超车计分；未改正式代码。
+- 2026-08-18：Hans 选择同向贴近超车也计入擦车，并指出它与迎面晚躲都是“贴近后横移通过”。新增 [ADR 0011](docs/adr/0011-mixed-flow-graze.md)：统一玩家用语、连击与结算项；同一目标一次，普通远距超车不计分。下一步开始逐屏确认 UI；未改正式代码。
+- 2026-08-18：Hans 选择菜单以游戏界面为主，只借 TaiT 的硬边窗口、点阵、CRT 外缘信号和不对称层级；不做完整复古电脑桌面，不放假菜单栏、假光标或无功能桌面图标。下一项确认发车页车辆占比；未改正式代码。
+- 2026-08-18：Hans 选择发车页当前车辆完整收在 `600×340` 主展示窗内，车辆本体使用 `300×140` 安全框，不做破框海报构图。下一项确认车辆展示角度；未改正式代码。
+- 2026-08-18：Hans 选择发车页车辆使用车尾三分之四视角。五辆车各做独立发车展示图，与选车侧视图、局内正后视精灵分开，并保持同框同锚点。下一项确认展示窗背景；未改正式代码。
+- 2026-08-18：Hans 选择五辆车共用霓虹公路发车线背景。背景独立为 `568×288` 窗内图层，只含夜城、空道路和发车线，不烤入车、交通、文字或按钮。三个入口沿用 ADR 0007 已确认的“开车居中、选车/说明右下”；下一项确认展示窗待机动画；未改正式代码。
+- 2026-08-18：Hans 选择发车页低强度待机动画：尾灯呼吸、远处灯牌低频闪烁、车身最多 `2 px` 轻摆；道路和镜头不动，也不自动播放引擎声。下一项确认选车页翻车方式；未改正式代码。
+- 2026-08-18：Hans 选择选车页同时支持左右滑动和 `88×88` 箭头；两者共用同一切车逻辑，一次输入只翻一辆，不另加手势说明文字。下一项确认车库首尾是否循环；未改正式代码。
+- 2026-08-18：Hans 选择五车首尾循环；第一辆向左到第五辆，第五辆向右回第一辆，滑动与箭头方向一致。下一项确认未解锁车辆的信息可见度；未改正式代码。
+- 2026-08-18：Hans 选择未解锁车辆只公开名称、侧视剪影和解锁里程；速度、命格、格言与图鉴正文解锁后才出现，窗口尺寸不变。下一项确认切车过渡；未改正式代码。
+- 2026-08-18：Hans 选择切车时使用内容窗内 `2–4` 帧 CRT 信号错位，总长 `120–160 ms`；不做车辆滑入或全屏闪烁，也不新增过渡素材。下一项确认说明页演示形式；未改正式代码。
+- 2026-08-18：Hans 选择说明页三项各配 `112×72` 低帧率小动画并轮流播放，任一时刻只动一项。发现并修正旧“迎面晚躲”说明为统一擦车短句；下一项确认擦车动画是否同时演示两种车流；未改正式代码。
+- 2026-08-18：Hans 选择擦车小动画逐轮交替演示迎面晚躲和同向贴近超车，共用区域与一句文案，以正背轮廓和运动方向区分。下一项确认结算页结果插图；未改正式代码。
+- 2026-08-18：Hans 要求剩余问题改为每次 5 项。复核后保留 10 个真正会改变体验、构图或素材量的决策，分为结算页 5 项和局内 HUD 5 项；其他技术规格不再逐项打扰。未改正式代码。
+- 2026-08-18：Hans 一次确认第一批结算页为 `1B 2A 3B 4C 5A`：四类 `96×96` 结果图、默认本局、约 0.8 秒快速揭示、前三加本人、CRT 信号切入。下一批为最后 5 项 HUD 决策；未改正式代码。
+- 2026-08-18：Hans 一次确认最后一批 HUD 为 `6B 7B 8A 9B 10A`，并要求界面尽量减少文字提醒：三块独立底板、四段技能条、纯 `×N`、只用三灯发车、路段只靠环境提示。至此 10 项批量确认和全部出图前决策完成；规格状态改为 decision-complete，Gate 6 仍暂停，未改正式代码。
+- 2026-08-18：完成 U1 主体与 U2 的 720×1280 核心矩阵，形成可试玩 Cocos 色块原型。正式工程加入 `ROAD_VERSION=3` 混合车流、三次危险段、4–6 波可解生成、OutRun 式左右弯/上下坡、隐藏车辆灯光提示、同向/迎面统一擦车、五屏 CRT 色块 UI、三块低文字 HUD、锁车态、说明演示、0.8 秒结算揭示与交通节点复用池。`npm test` 43 项、两层 TypeScript 检查、Cocos scene/references/hierarchy/layout 均通过；Orca 浏览器逐屏与手势复验通过；Creator 于 23:30 重建约 3.0 MB 微信包。长屏/异形安全区仍留 Gate 6 前补测；当前宿主未暴露微信助手 MCP，故 `run_game/get_logs` 继续 BLOCKED；Gate 6 仍未解除。
+- 2026-08-19：为 Gate 6 后的正式美术生产建立 `.grok/skills/ai-game-art-pipeline/`。基于 ControlNet、ImageMagick、Adobe、SPDX、Cocos/Unity/Godot 一手资料，流程固定为来源与规格 G0→结构白模 G1→模型/提示词/语言/控制参数矩阵 G1.5→正式风格化 G2→像素/点阵 G3→透明导出 G4→Cocos 代表资产接入 G5→微信包验收 G6；附 brief、style calibration、manifest 模板和 PNG 验证脚本。三轮独立前向测试依次暴露并修正：安全框不等于逻辑母版、菜单容器色卡不等于车辆色板、“低/高”控制标签不能脑补数值、不同模型参数不能无依据归一化；最终新上下文复测通过。未生成或导入正式美术，Gate 6 仍暂停。
+- 2026-08-19：按试玩反馈完成原型修订。完整路线按跑车满速约 300 秒；试玩启动档案抬到最高解锁里程，五车全部可测但正式里程规则不变。道路、车道线、护栏、墙和路侧物件统一消费 `RoadSample` 投影，消除弯道第二消失点。选车页恢复 `ui-copy` 中格言、宝开体正文和独白，最长 DIO 文案无截断。发车页标题升为第一层，车辆窗缩至 `520×224` 并下移，按钮改为「发动」「车库」。`npm test` 45/45、core typecheck、Creator/Orca 运行预览通过；微信包于 00:17:50 构建成功。微信小游戏助手已通过 `codex mcp add` 安装并完成 MCP 2024-11-05 握手，当前会话工具表未动态暴露 `run_game/get_logs`。
+- 2026-08-19：第二次试跑后延长局内视距。道路前视从 900 扩到 1800，透视深度独立为 260，坡度垂直投影提到 1.15；试玩机位由 A 修订为 A-2：消失点 `(376,700)`、`k=1.572`，保留近处约 509px 半路宽和玩家锚点，只增加画面内道路纵深。交通定义加入基准 km/h，固定 seed 生成 ±10% 逐车差异，`RunSession` 改为真实相对位移；`ROAD_VERSION=4`。46/46 测试、core typecheck、Cocos MCP 纯 Canvas 截图、场景/引用校验和 0 条 console error 通过。Orca 浏览器自动化通道未暴露，未取得 Orca 截图。用户报告的 `project.config.json: libVersion 字段需为 string, string` 按要求留到下个微信助手 MCP 会话，本轮未编辑配置或刷新微信包。
+- 2026-08-19：第三次试跑后补齐三个原型缺口。技能条在未释放时按 `200ms/s` 自然恢复，空表 20 秒回满，装置仍立即补满；换向由 core 做方向许可，同向车在预警/导流阶段向两侧退场，迎面车从 sentinel 才激活，任一 snapshot 不混流；场景主题在段尾 1200 距离内连续混色，日月重叠淡变，并在 Mid 层铺道路外缘到画布外的连续地表。49/49 测试与两层 TypeScript 检查通过；Cocos 局内截图确认外侧地表无透明空带，同向车处于侧向退场状态。`project.config.json` 与微信导出包按约定未动。
+- 2026-08-19：Hans 回复“可以，把本轮开发进度写回文档”，同意将 20 秒自然回能、换向不混流、场景/天空/地表连续接续及其 Cocos/测试证据纳入当前原型基线。该确认不等于解除 Gate 6；下一步收敛为修复微信 `libVersion`、刷新导出包并完成助手 `run_game/get_logs` 包级验证。
+- 2026-08-19：完成微信包级验证。根因是 Creator 默认模板把 `libVersion` 写成 `"game"`，微信开发者工具校验失败；模板与导出包改为空字符串。Creator CLI 于 11:11:14 刷新 `build/wechatgame/`（约 2.90 MB、40 文件、AppID 正式号）。助手 `run_game` 起在 `http://localhost:3847`；Orca 内置浏览器见到发车页（逮虾户 / 发动 / 车库 / 说明）。助手 `capture_screenshot` 超时，改用 Orca 视口截图。未上传、未解除 Gate 6。
+- 2026-08-19：预览里来车堆在路面上。根因是微信包把 `[...trafficPool.entries()]` 编成 `[].concat(iterator)`，回收循环每帧对 `undefined` 调 `removeFromParent`。已改成 `Map.forEach` 并刷新导出包。
+- 2026-08-19：Hans 要求局内 HUD 避开微信右上角胶囊。先试过整套下移，试玩后改为顶栏只留命格/技能/总分/连击，底部单独一只时速+计时仪表。正式形是半圆环仪表盘；当前整圆 Graphics 只占槽，出图时整件替换。见 [ADR 0012](docs/adr/0012-bottom-hud-cluster.md)。Orca 预览（iPhone 6/7/8）已见到分槽；证据 [play-hud-split](docs/evidence/s1/midnightroad-play-hud-split.png)。
+- 2026-08-19：Hans「可以，解除出图暂停，应用 ai-game-art-pipeline」。Gate 6 关闭。正式图按 G0→G6 串行，批次从 A0 一张发车页风格锚点开始；未填 G0、未过 G1.5 不批量，预览不进包。
+- 2026-08-19：Hans 交代 A0 工单留到下一轮新会话；本轮把进度写回文档，并写清改代码 / Creator / 微信预览巡环。见 [docs/framework-loop.md](docs/framework-loop.md)。根目录 `参考/` 与契约仓根 `package-lock.json` 不入库。

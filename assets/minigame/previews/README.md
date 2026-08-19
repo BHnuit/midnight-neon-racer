@@ -4,7 +4,7 @@
 
 - `bg-*`：无车背景实验。
 - `play-*`：合成观感预览。
-- `_paint_3lane.py`：机位 A 预览生成脚本。
+- `_paint_3lane.py`：历史机位 A 预览生成脚本；输出只作风格参考，当前运行时/新素材使用 A-2。
 - `_check_perspective.py`：透视检查工具。
 
 预览可能包含已否定或未通过的版本，文件名不等于批准状态。批准结论以 `../../../docs/art-bible-revision-01.md` 和 `../../../PROJECT.md` 为准；`__pycache__/` 是忽略的生成缓存。

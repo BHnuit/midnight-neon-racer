@@ -2,7 +2,9 @@
 
 给下一会话（Codex 审查并优化界面）用。只写磁盘上已经落地的东西，不写计划中的图。
 
-**画面仍是色块。局内精细出图暂停。不要改玩法规则，不要发明文案机制，不要手改 `.scene` / `.prefab` / `.anim` / `.meta`。**
+> 2026-08-18 审查已完成。优化结论、逐屏几何和出图接口见 [ui-art-production-spec.md](ui-art-production-spec.md)；本页继续只记录审查前的磁盘现状。
+
+**画面仍是色块，直到 A0 之后按 G0→G6 替换。不要改玩法规则，不要发明文案机制，不要手改 `.scene` / `.prefab` / `.anim` / `.meta`。**
 
 | | |
 | --- | --- |
@@ -34,7 +36,7 @@ GameBalance / Traffic / CarCopy / seedRng
 RoadFactory  →  RunSession  →  GameDirector  →  MainController
                      ↑                ↓
                RoadProject      PlatformPort
-               (机位 A)        ↙           ↘
+              (机位 A-2)       ↙           ↘
                          Dev adapter    WeChat adapter
 ```
 
@@ -50,13 +52,13 @@ RoadFactory  →  RunSession  →  GameDirector  →  MainController
 | `assets/scripts/core/Traffic.ts` | 10 种来车：重量、占道、失败标题/一行、刷出权重 |
 | `assets/scripts/core/CarCopy.ts` | 选车图鉴与说明三句。正式稿从 `docs/ui-copy.md` 抄入 |
 | `assets/scripts/core/RoadFactory.ts` | 种子路。`ROAD_VERSION = 2`。第一段永远开阔三车道；之后互斥抽施工或路形 |
-| `assets/scripts/core/RoadProject.ts` | 机位 A：`VX,VY = 376,797`，`k = 2.244`。投影、路边推近 |
+| `assets/scripts/core/RoadProject.ts` | 机位 A-2：`VX,VY = 376,700`，`k = 1.572`。保留近处路宽，增加道路纵深与路边推近距离 |
 | `assets/scripts/core/RunSession.ts` | 一局规则：跟手、擦车、重量、氮/飞/碾、施工撞墙、路形夹道 |
 | `assets/scripts/core/PlayerProgress.ts` | 里程解锁 2/6/15、历史最高分 |
 | `assets/scripts/app/GameDirector.ts` | 屏：`title / select / help / play / result`（`revive` 代码在，第一版不打开） |
 | `assets/scripts/cocos/MainController.ts` | 输入、槽位、九层色块、HUD、失败演出 |
 | `assets/scripts/platform/*` | Dev / 微信。好友榜 key `best_score_v1` |
-| `tests/core/` | 37 个纯规则测试。不进 Creator |
+| `tests/core/` | 49 个纯规则测试。不进 Creator |
 
 场景里没有独立 prefab 屏。`SelectLayer` / `PlayLayer` / `SettleLayer` / `ReviveLayer` 都挂在 `GameRoot` 上，由 `MainController` 显隐。
 
@@ -70,7 +72,7 @@ RoadFactory  →  RunSession  →  GameDirector  →  MainController
 | --- | --- | --- |
 | 横移 | 跟手拖，松手停缝，点一下不挪 | ADR 0003 |
 | 加速 | 双击；氮/飞可按住；压路机必须满条双击一次 | ADR 0003、0009 |
-| 擦车 | 迎面晚躲，不是邻道路过 | ADR 0004 |
+| 擦车 | 贴近车辆后横移完成危险通过；含迎面晚躲和同向贴近超车 | ADR 0011 |
 | 连击 | 只吃擦车，200/300/400/500 | ADR 0005 |
 | 命格 | 保险杠格 + 1 心，HUD 画成一排 | ADR 0008 |
 | 重量 | 更重撞飞不扣格；一样或更轻扣一格 | ADR 0008 |
@@ -80,10 +82,10 @@ RoadFactory  →  RunSession  →  GameDirector  →  MainController
 | 第一版广告 | 无。续命页不出现 | ADR 0006 |
 | 屏幕 | 落地是发车。选车确认回发车。只有发车「开车」上路 | ADR 0007 |
 | 施工 vs 路形 | **同一段不叠**。施工=三车道宽+堵一条；路形=大桥/隧道/土路把路收窄 | ADR 0010 |
-| 机位 | 修法 A，消失点 (376, 797) | art-bible-revision-01 |
+| 机位 | 试玩修订 A-2，消失点 (376, 700)，`k=1.572` | RoadProject + 本文；修订 01 保留历史依据 |
 | 画布 | 720×1280。菜单可 CRT，局内平直 | CONTEXT |
 
-开车顶栏约定：左命格、其下技能条；中总分；右时速、其下本局计时。技巧分跳字并燃烧，路程匀发不烧。这不是倒计时。
+开车 HUD 约定：顶栏左=命格+四段技能条，中=总分与 `×N`；右上角空给微信胶囊。底部中央半圆环仪表=时速与累计计时（色块整圆只占位）。技巧分跳字并燃烧，路程匀发不烧。这不是倒计时。
 
 ---
 
@@ -116,7 +118,7 @@ RoadFactory  →  RunSession  →  GameDirector  →  MainController
 ```
 拖：车跟着走，松手停在那儿。点一下不挪。
 双击松开是短冲，第二下按住会持续。
-脸上要撞再让开，才算擦车。
+贴近车辆再横移通过，才算擦车。
 ```
 
 不要补技能、钻缝、重量、施工教程。
@@ -207,7 +209,7 @@ HUD 路况字（色块预览用，出图后可收）：`晴/雨/雪/雾/风 · �
 │   点一下不挪。                   │
 │   双击松开是短冲，第二下按住会    │
 │   持续。                         │
-│   脸上要撞再让开，才算擦车。      │
+│   贴近车辆再横移通过，才算擦车。    │
 │                                  │
 │            ┌────────┐            │
 │            │  返回  │            │
@@ -219,11 +221,13 @@ HUD 路况字（色块预览用，出图后可收）：`晴/雨/雪/雾/风 · �
 
 倒计时 3-2-1 在路中央 `CountLabel`。倒计时内路已画、车不动。
 
+> 这是审查前的磁盘现状，不是目标设计。目标 HUD 已改为三块底板、四段技能条、纯 `×N`、三灯发车且无路况文字，见 [ui-art-production-spec.md](ui-art-production-spec.md) §6。
+
 ```
         天色底 (Road 精灵染色)
               ┌ 远景剪影 Far ────── 红框希望占的带，贴消失点，不要盖路
               │ 中景楼 Mid
-消失点 (376,797)
+消失点 (376,700)
               │ 近景栏 Near
               │ 路面 RoadMesh（虚线/土路/锥桶）
               │ 氮光带 NitroBand（仅按住氮，贴路缘外侧铺满）

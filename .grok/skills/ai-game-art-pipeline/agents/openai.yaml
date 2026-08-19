@@ -1,0 +1,4 @@
+interface:
+  display_name: "AI Game Art Pipeline"
+  short_description: "Calibrated reference-to-runtime game art workflow"
+  default_prompt: "Use $ai-game-art-pipeline to calibrate a reproducible style recipe, then turn a reference into a pixel-validated, engine-ready game asset."

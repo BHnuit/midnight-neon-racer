@@ -15,8 +15,8 @@ Pro 的卖点（仓库 README）：**16 个意图级工具**、约 231 项操作
 | --- | --- |
 | 工程 | `/Users/hant/工作台/projects/creation/midnightroad/` |
 | Creator | 3.8.6，面板要开着 |
-| MCP 端口 | `21569`（`settings/mcp-server.json`，改了就改客户端 url） |
-| HTTP | `http://127.0.0.1:21569/mcp` |
+| MCP 端口 | 以工程 `settings/mcp-server.json` 为准（本机最近 **21570**；旧笔记里的 21569 不要死记） |
+| HTTP | `http://127.0.0.1:<端口>/mcp` |
 | Grok | `~/.grok/config.toml` 的 `[mcp_servers.cocos-creator]` |
 | Cursor / Codex | 已接同一地址（各自客户端配置） |
 
@@ -24,7 +24,7 @@ Grok 配置：
 
 ```toml
 [mcp_servers.cocos-creator]
-url = "http://127.0.0.1:21569/mcp"
+url = "http://127.0.0.1:21570/mcp"
 enabled = true
 ```
 
@@ -47,7 +47,7 @@ Grok 换会话才会把新 MCP 编进工具表；`/mcps` 按 `r` 刷新不够。
 
 | | 开源 README | 本机 Pro 1.7.9 |
 | --- | --- | --- |
-| 协议 | HTTP，示例端口 3000 | Streamable HTTP，本机 **21569** |
+| 协议 | HTTP，示例端口 3000 | Streamable HTTP，本机以 `settings/mcp-server.json` 为准（最近 **21570**） |
 | 工具形态 | 约 50 个细工具（`node_lifecycle` 等） | **16** 个意图工具，靠 `action` 切换 |
 | 知识库 / 动画 / Spine | 无或不完整 | 有 `cocos_knowledge`、`cocos_animation`、`cocos_spine` |
 | 一次搭整棵 UI | 无 | `cocos_builder` / `cocos_composite` / `cocos_template` |
@@ -195,7 +195,7 @@ Grok 侧全名一律加前缀 `cocos-creator__`。下表是裸名。
 | 现象 | 先看 |
 | --- | --- |
 | Grok 没有 16 个 cocos 工具 | 是不是旧会话；Creator 面板在不在；`~/.grok/config.toml` 的 url |
-| 工具在但全失败 | `cocos_editor action=server_status`；端口是不是还是 21569 |
+| 工具在但全失败 | `cocos_editor action=server_status`；端口是不是还和 `settings/mcp-server.json` 一致 |
 | 场景没准备好 | `cocos_scene action=is_ready`，再 `open` |
 | 资源导入失败 | `cocos_scene action=validate_scene`，不要手改 meta |
 | 动画写不进去 | Creator 动画面板没开；先 `query_edit_info` |

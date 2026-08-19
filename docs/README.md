@@ -1,24 +1,41 @@
 # 文档索引
 
-先读仓库根 [PROJECT.md](../PROJECT.md) 的 Startup Summary，再读 [CONTEXT.md](../CONTEXT.md)。新会话入口：[new-session.md](new-session.md)。文件树：[TREE.md](../TREE.md)。
+先读仓库根 [PROJECT.md](../PROJECT.md) 的 Startup Summary，再读 [CONTEXT.md](../CONTEXT.md)。新会话入口：[new-session.md](new-session.md)。改玩法/验包：[framework-loop.md](framework-loop.md)。文件树：[TREE.md](../TREE.md)。
+
+## 日常入口
 
 | 文件 | 干什么 |
 | --- | --- |
-| [plan.md](plan.md) | 第一版完整开发方案：体验支柱、正式架构、S0–S7、风险、追溯、证据与审查标准 |
-| [evidence/README.md](evidence/README.md) | S0–S7 验证证据命名、分层与记录模板 |
-| [adr/0001-first-version-loop.md](adr/0001-first-version-loop.md) | 第一版不是 Demo 一命闪避 |
-| [adr/0002-dual-repo-governance.md](adr/0002-dual-repo-governance.md) | 契约仓、Cocos 源工程与微信生成包的治理边界 |
-| [adr/README.md](adr/README.md) | ADR 编号、用途与索引 |
-| [cocos-slice-a.md](cocos-slice-a.md) | 第一刀：空包进微信开发者工具 |
-| [cocos-slice-b-mvp.md](cocos-slice-b-mvp.md) | 第二轮验证：色块最小循环（非正式开工） |
-| [cocos-mcp-pro.md](cocos-mcp-pro.md) | Cocos MCP 3.x Pro 用法 |
-| [cocos-publish-wechatgame.md](cocos-publish-wechatgame.md) | 发布到微信小游戏 |
+| [new-session.md](new-session.md) | 新会话先读这页 |
+| [framework-loop.md](framework-loop.md) | 现行：改代码、Creator 调试、微信助手预览 |
+| [plan.md](plan.md) | 第一版完整开发方案 S0–S7（已接受） |
+| [color-block-now.md](color-block-now.md) | 色块框架现状、已锁需求、屏幕图示 |
+| [ui-art-production-spec.md](ui-art-production-spec.md) | 五屏几何、HUD、图层、素材批次 |
+| [adr/README.md](adr/README.md) | 稳定决策索引（0001–0012） |
+| [evidence/README.md](evidence/README.md) | S0–S7 证据命名与分层 |
+
+## 美术
+
+| 文件 | 干什么 |
+| --- | --- |
+| [art-bible.md](art-bible.md)、[art/README.md](art/README.md) | 视觉契约与分册；Gate 6 已解除，从 A0 单锚点出图 |
+| [art-bible-revision-01.md](art-bible-revision-01.md) | 机位 A → 运行时 A-2 |
+| [art/pipeline-two-lists.png](art/pipeline-two-lists.png) | 工序 G0–G6 × 批次 A0–A6 对照图 |
+| [ai-game-art-pipeline-research.md](ai-game-art-pipeline-research.md) | 出图流水线一手资料 |
+| [ui-copy.md](ui-copy.md) | 选车图鉴与结算一行 |
+
+## 历史过线与平台附录
+
+这些页不再指导日常改动，只保留当时怎么过线。
+
+| 文件 | 干什么 |
+| --- | --- |
+| [cocos-slice-a.md](cocos-slice-a.md) | 第一刀：空包进开发者工具（已过） |
+| [cocos-slice-b-mvp.md](cocos-slice-b-mvp.md) | 第二轮：`MvpLoop` 最小循环（已退役） |
+| [cocos-mcp-pro.md](cocos-mcp-pro.md) | Cocos MCP 3.x Pro 工具表 |
+| [cocos-publish-wechatgame.md](cocos-publish-wechatgame.md) | 编辑器构建发布面板 |
 | [wechat-minigame-start.md](wechat-minigame-start.md) | 微信新手教程摘录 |
 | [wechat-minigame-platform.md](wechat-minigame-platform.md) | 平台约束 |
 | [wechat-beian-copy.md](wechat-beian-copy.md) | 备案文案（未提交） |
-| [art-bible.md](art-bible.md)、[art/README.md](art/README.md) | 美术契约与分册索引（出图暂停） |
-| [art-bible-revision-01.md](art-bible-revision-01.md) | 机位修法 A |
-| [ui-copy.md](ui-copy.md) | 选车图鉴与结算一行 |
-| [color-block-now.md](color-block-now.md) | 色块框架现状：代码结构、已锁需求、文案、屏幕文字图示。界面审查入口 |
 
-完整方案 [plan.md](plan.md) 已于 2026-08-18 由 Hans 接受。S1–S5 规则已进 midnightroad；当前色块预览，出图仍暂停。
+Hans 已接受 [plan.md](plan.md)。色块可玩、助手预览可开、Gate 6 已解除。下一会话写 A0 的 G0 工单；未填工单不生成图。
